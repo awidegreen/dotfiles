@@ -36,7 +36,7 @@ if [ -d $HOME/.oh-my-zsh ]; then
   zsh $HOME/.oh-my-zsh/tools/upgrade.sh
 else
   printf "Installing OH-MY-ZSH\n"
-  git clone git://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
+  git clone git://github.com/awidegreen/oh-my-zsh.git $HOME/.oh-my-zsh
 fi
 
 # Install vim bundles

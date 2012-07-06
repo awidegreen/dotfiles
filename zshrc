@@ -5,7 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 
 # Set to the name theme to load.
 # Look in ~/.oh-my-zsh/themes/
-export ZSH_THEME="kennethreitz"
+export ZSH_THEME="awidegreen"
 
 # Set to this to use case-sensitive completion
 export CASE_SENSITIVE="true"
@@ -37,7 +37,7 @@ source $ZSH/oh-my-zsh.sh
 # Aliases
 source $HOME/.zsh/aliases.zsh
 # Key Bindings
-# source $HOME/.zsh/keybindings.zsh
+ source $HOME/.zsh/keybindings.zsh
 
 #History Settings
 HISTFILE=~/.zsh_history
