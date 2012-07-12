@@ -59,14 +59,19 @@ set backup
 set backupdir=~/.vim/backup/
 set directory=~/.vim/tmp
 
-" Tab completion options
-" (only complete to the longest unambiguous match, and show a menu)
-set completeopt=longest,menu
-set wildmode=list:longest,list:full
-set complete=.,t
-
+"--- Occurence
+"" show # buffers, f-type, fileformat and fileencoding in statusline
+set statusline=[%n]\ [%f]\ %w%y%r%m[%{&fileformat}][%{&fileencoding}]\ %=\ %l/%L,%-5c\ %P\
+ 
 " Remove highlight after search
 nmap <silent> ,/ :nohlsearch<CR>
+
+" if gui is started, remove menu and toolbar
+if has("gui_running")
+  set guioptions-=m  " Remove menubar
+  set guioptions-=T  " Remove toolbar
+endif
+ 
 
 " set colorscheme
 "colorscheme zenburn 
@@ -81,9 +86,30 @@ endif
 
 "colorscheme solarized
 "colorscheme wombat256mod
+"------
 
-" show # buffers, f-type, fileformat and fileencoding in statusline
-set statusline=[%n]\ [%f]\ %w%y%r%m[%{&fileformat}][%{&fileencoding}]\ %=\ %l/%L,%-5c\ %P\
+"--- Navigation
+" nav for splitted windows
+nmap <silent> <A-Up> :wincmd k<CR>    
+nmap <silent> <A-Down> :wincmd j<CR>
+nmap <silent> <A-Left> :wincmd h<CR>
+nmap <silent> <A-Right> :wincmd l<CR>
+
+" Tab completion options
+" (only complete to the longest unambiguous match, and show a menu)
+set completeopt=longest,menu
+set wildmode=list:longest,list:full
+set complete=.,t
+"------
+
+"--- Plugin config
+" NERDTree config 
+"   show on the right side
+let g:NERDTreeWinPos = "right"  "Open NERDTree on the right
+"   toggle nerdtree with F3
+map <F3> :NERDTreeToggle<CR> 
+"------
+
 
 " if present, include local vim config
 if filereadable(expand("~/.vimrc.local"))

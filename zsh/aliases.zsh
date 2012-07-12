@@ -1,7 +1,9 @@
 # ZSH Aliases
 
-alias ll='ls -ahl'
-alias lt='ls -ahltr'
+alias ll='ls -hl'
+alias lla='ls -ahl' 
+alias lt='ls -hltr'
+alias lta='ls -ahltr' 
 alias ducks='du -cks * | sort -rn |head -11'
 alias grep='grep --color=auto'
 alias less="less -r"

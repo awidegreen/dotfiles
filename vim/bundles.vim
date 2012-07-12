@@ -22,12 +22,14 @@ Bundle 'fugitive.vim'
 
 " Navigation
 "Bundle 'git://git.wincent.com/command-t.git'
-"Bundle 'The-NERD-tree'
+Bundle 'git://github.com/kien/ctrlp.vim.git'
+Bundle 'The-NERD-tree'
 
 " Indentation
 "Bundle 'IndentAnything'
 "Bundle 'Javascript-Indentation'
 "Bundle 'trailing-whitespace'
+Bundle 'git://github.com/ervandew/supertab.git'
 
 " Syntax
 Bundle 'Markdown-syntax'
