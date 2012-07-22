@@ -33,6 +33,7 @@ Bundle 'git://github.com/ervandew/supertab.git'
 
 " Syntax
 Bundle 'Markdown-syntax'
+Bundle 'git://github.com/bbommarito/vim-slim.git'
 
 " Color schemes
 Bundle 'Solarized'

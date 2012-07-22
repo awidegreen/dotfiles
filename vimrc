@@ -89,11 +89,17 @@ endif
 "------
 
 "--- Navigation
-" nav for splitted windows
+" nav for splitted windows normal mode
 nmap <silent> <A-Up> :wincmd k<CR>    
 nmap <silent> <A-Down> :wincmd j<CR>
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
+
+" delete word forward, backward in insert mode
+imap <A-b> <C-o>b
+imap <A-f> <C-o>w
+" remove prev word in insert mode A-Backspace
+"inoremap <A-BS> <C-[>d
 
 " Tab completion options
 " (only complete to the longest unambiguous match, and show a menu)
@@ -101,6 +107,12 @@ set completeopt=longest,menu
 set wildmode=list:longest,list:full
 set complete=.,t
 "------
+
+"--- misc
+" Disable error bell, beep
+set noeb vb t_vb=
+"------
+
 
 "--- Plugin config
 " NERDTree config 
