@@ -10,7 +10,7 @@ Under dotfiles/bin there are some useful scripts and tools.
 
 ## Usage
 
-    git clone https://github.com/pfleidi/dotfiles.git ~/dotfiles
+    git clone https://github.com/awidegreen/dotfiles.git ~/dotfiles
     cd ~/dotfiles
     ./bootstrap.sh
 
