@@ -9,35 +9,36 @@ Bundle 'gmarik/vundle'
 "Bundle 'SudoEdit.vim'
 
 " Programming
-"Bundle 'jQuery'
 "Bundle 'snipMate'
 "Bundle 'ruby'
-"Bundle 'gregsexton/MatchTag'
-"Bundle 'tpope/vim-cucumber'
-"Bundle 'matchit.zip'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'tpope/vim-unimpaired'
 
 " Git integration
 Bundle 'git.zip'
 Bundle 'fugitive.vim'
 
 " Navigation
-"Bundle 'git://git.wincent.com/command-t.git'
-Bundle 'git://github.com/kien/ctrlp.vim.git'
+Bundle 'kien/ctrlp.vim'
 Bundle 'The-NERD-tree'
-
-" Indentation
-"Bundle 'IndentAnything'
-"Bundle 'Javascript-Indentation'
-"Bundle 'trailing-whitespace'
-Bundle 'git://github.com/ervandew/supertab.git'
 
 " Syntax
 Bundle 'Markdown-syntax'
-Bundle 'git://github.com/bbommarito/vim-slim.git'
+Bundle 'slim-template/vim-slim'
+Bundle 'OmniCppComplete'
+
+" Tags and completion
+Bundle 'ervandew/supertab'
+Bundle 'majutsushi/tagbar'
+Bundle 'xolox/vim-easytags'
+
+" Search 
+Bundle 'mileszs/ack.vim'
 
 " Color schemes
 Bundle 'Solarized'
 Bundle 'Wombat'
 Bundle 'wombat256.vim'
+Bundle 'Zenburn'
 
 filetype plugin indent on     " required!

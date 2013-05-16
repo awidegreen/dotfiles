@@ -37,7 +37,7 @@ source $ZSH/oh-my-zsh.sh
 # Aliases
 source $HOME/.zsh/aliases.zsh
 # Key Bindings
- source $HOME/.zsh/keybindings.zsh
+source $HOME/.zsh/keybindings.zsh
 
 #History Settings
 HISTFILE=~/.zsh_history
@@ -47,6 +47,9 @@ SAVEHIST=$HISTSIZE
 # completion cache
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
+# allow completion of cd ../
+# see http://stackoverflow.com/questions/564648/zsh-tab-completion-for-cd
+zstyle ':completion:*' special-dirs true 
 
 # ignore duplicate entries
 setopt hist_ignore_all_dups
