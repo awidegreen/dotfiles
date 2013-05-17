@@ -40,6 +40,12 @@ else
 fi
 
 # Install vim bundles
-git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+if [ -d $HOME/.vim/bundle/vundle ]; then
+printf "Updading vundle ...\n"
+  cd $HOME/.vim/bundle/vundle; git pull; cd -
+else
+  git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
+fi
+
 vim -u ~/.vim/bundles.vim +BundleInstall +q +q
 
