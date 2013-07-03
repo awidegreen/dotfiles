@@ -17,7 +17,8 @@ export DISABLE_AUTO_UPDATE="true"
 # export DISABLE_LS_COLORS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(git ruby gem bundler zsh-syntax-highlighting)
+#plugins=(git ruby gem bundler zsh-syntax-highlighting)
+plugins=(git ruby gem zsh-syntax-highlighting)
 
 # Needs https://github.com/zsh-users/zsh-syntax-highlighting/
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
@@ -56,8 +57,8 @@ setopt hist_ignore_all_dups
 setopt hist_ignore_space
 
 # Load ENV Variables
-export EDITOR=vim
-export PAGER=less
+EDITOR=vim
+PAGER=less
 
 # Put custom $PATH settings into ~/.zprofile or ~/.zshrc.local
 export PATH=$PATH:$HOME/.bin/
@@ -86,5 +87,9 @@ type fortune &>/dev/null && fortune -a
 type grc &>/dev/null && source $HOME/.zsh/grc_aliases.zsh
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:$HOME/.gem/ruby/2.0.0/bin
+
+# set term variable to support 256 colors
+TERM=xterm-256color
 
 # EOF

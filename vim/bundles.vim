@@ -40,5 +40,6 @@ Bundle 'Solarized'
 Bundle 'Wombat'
 Bundle 'wombat256.vim'
 Bundle 'Zenburn'
+Bundle 'vim-scripts/tango.vim'
 
 filetype plugin indent on     " required!

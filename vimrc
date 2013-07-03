@@ -12,6 +12,8 @@ set encoding=utf-8
 set backup
 set backupdir=~/.vim/backup/
 set directory=~/.vim/tmp
+
+set term=xterm
 "}}}
 
 
@@ -68,6 +70,8 @@ set complete=.,t
 
 " Look and Feel {{{
 " Colors and Scheme {{{
+"colorscheme tango
+"let g:bg_tango=1
 colorscheme zenburn
 "colorscheme molokai
 "colorscheme mustang
@@ -81,8 +85,11 @@ let g:rehash256 = 1
 set list                       
 set listchars=tab:▸\ ,eol:¬    
 
-"for supporting 256 colors
+" for supporting 256 colors
 set t_Co=256
+
+" disable background color erase (BCE) - press C-l to refresh term display
+set t_ut=
 
 " enable syntax highlighting
 syntax on
@@ -193,6 +200,13 @@ set completeopt=menuone,menu,longest
 "highlight   PmenuThumb    ctermfg=0 ctermbg=7
 " }}}
 
+" powerline {{{
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
+" }}}
+
 "}}}
 
+set laststatus=2
 filetype plugin indent on
