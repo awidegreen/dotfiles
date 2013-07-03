@@ -201,9 +201,11 @@ set completeopt=menuone,menu,longest
 " }}}
 
 " powerline {{{
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+if has("python")
+   python from powerline.vim import setup as powerline_setup
+   python powerline_setup()
+   python del powerline_setup
+endif
 " }}}
 
 "}}}
