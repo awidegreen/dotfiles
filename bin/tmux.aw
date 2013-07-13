@@ -22,8 +22,6 @@ $tmux set-window-option -q -t $SESSION set-remain-on-exit on
 $tmux new-window -t $SESSION:0 -k -n htopMusic htop 
 # split for if top
 $tmux split-window -v -p 10 -t $SESSION:0  detektor.fm
-# split for detektor.fm
-$tmux split-window -v -p 10 -t $SESSION:0  detektor.fm
 
 # development
 $tmux set -t $SESSION -q default-path $devpath
