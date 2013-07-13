@@ -20,8 +20,6 @@ $tmux new-session -d -s $SESSION
 #   remain on exit is on here, if program closed, respawn pane: bind to F5
 $tmux set-window-option -q -t $SESSION set-remain-on-exit on
 $tmux new-window -t $SESSION:0 -k -n htopMusic htop 
-# split for if top
-$tmux split-window -v -p 10 -t $SESSION:0  detektor.fm
 # split for detektor.fm
 $tmux split-window -v -p 10 -t $SESSION:0  detektor.fm
 
