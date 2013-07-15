@@ -1,12 +1,36 @@
-#!/bin/bash
+#!/bin/sh
 
+function has_cmd() {
+   if command -v $1 >/dev/null 2>&1; then 
+      echo "true"
+   else
+      echo "false"
+   fi
+}
+
+#### main #####
+
+# define vars
 SESSION=$USER
+if [ $1 ]; then 
+   echo "Session name forced: $1"
+   SESSION=$1
+   sleep 1
+fi
+
 tmux="tmux -2"
 
 detektorfm=detektor.fm
+if_cmd="vnstat"
 defpath="~"
 devpath="~/development"
 
+top_cmd="top"
+if $(has_cmd "htop") == "true"; then
+   top_cmd="htop"
+fi
+
+# init tmux 
 $tmux has-session -t $SESSION &>/dev/null
 if [ $? -eq 0 ]; then
     echo "Session $SESSION already exists. Attaching."
@@ -19,9 +43,16 @@ $tmux new-session -d -s $SESSION
 # new window with htop and detektorfm
 #   remain on exit is on here, if program closed, respawn pane: bind to F5
 $tmux set-window-option -q -t $SESSION set-remain-on-exit on
-$tmux new-window -t $SESSION:0 -k -n htopMusic htop 
-# split for if top
-$tmux split-window -v -p 10 -t $SESSION:0  detektor.fm
+# if htop exists, use it otherwise top
+$tmux new-window -t $SESSION:0 -k -n htopMusic $top_cmd 
+# split for vnstat
+if $(has_cmd $if_cmd) == "true"; then 
+   $tmux split-window -v -p 20 -t $SESSION:0  "$if_cmd -l"
+fi 
+# split for detektor.fm
+if $(has_cmd $detektorfm) == "true"; then 
+   $tmux split-window -v -p 50 -t $SESSION:0 $detektorfm
+fi
 
 # development
 $tmux set -t $SESSION -q default-path $devpath
