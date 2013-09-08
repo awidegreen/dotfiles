@@ -18,7 +18,7 @@ export DISABLE_AUTO_UPDATE="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 #plugins=(git ruby gem bundler zsh-syntax-highlighting)
-plugins=(git ruby gem zsh-syntax-highlighting)
+plugins=(git ruby gem zsh-syntax-highlighting battery ssh-agent)
 
 # Needs https://github.com/zsh-users/zsh-syntax-highlighting/
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
@@ -51,6 +51,10 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 # allow completion of cd ../
 # see http://stackoverflow.com/questions/564648/zsh-tab-completion-for-cd
 zstyle ':completion:*' special-dirs true 
+
+## configure ssh-agent plugin
+#zstyle :omz:plugins:ssh-agent agent-forwarding
+zstyle :omz:plugins:ssh-agent identities id_rsa git_id_rsa
 
 # ignore duplicate entries
 setopt hist_ignore_all_dups
@@ -86,10 +90,10 @@ type fortune &>/dev/null && fortune -a
 # load grc aliases for colored shell output
 type grc &>/dev/null && source $HOME/.zsh/grc_aliases.zsh
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-PATH=$PATH:$HOME/.gem/ruby/2.0.0/bin
+# ruby adjustments
+#export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 # set term variable to support 256 colors
-TERM=xterm-256color
+export TERM=screen-256color
 
 # EOF

@@ -13,6 +13,7 @@ Bundle 'gmarik/vundle'
 "Bundle 'ruby'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-unimpaired'
+Bundle 'tpope/vim-surround'
 
 " Git integration
 Bundle 'git.zip'
@@ -23,7 +24,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'The-NERD-tree'
 
 " Syntax
-Bundle 'Markdown-syntax'
+Bundle 'tpope/vim-markdown'
 Bundle 'slim-template/vim-slim'
 Bundle 'OmniCppComplete'
 
