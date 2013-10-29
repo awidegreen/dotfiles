@@ -39,6 +39,15 @@ else
   git clone git://github.com/awidegreen/oh-my-zsh.git $HOME/.oh-my-zsh
 fi
 
+# install tmux-powerline
+tmux_powerline_dir="$HOME/.tmux-powerline"
+if [ -d $tmux_powerline_dir ]; then 
+  printf "tmux-powerline is already installed!\n"
+else
+  printf "Installing tmux-powerline to $tmux_powerline_dir\n"
+  git clone https://github.com/erikw/tmux-powerline.git $tmux_powerline_dir
+fi
+
 # Install vim bundles
 if [ -d $HOME/.vim/bundle/vundle ]; then
 printf "Updading vundle ...\n"
