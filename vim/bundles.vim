@@ -25,6 +25,7 @@ Bundle 'The-NERD-tree'
 
 " Syntax
 Bundle 'tpope/vim-markdown'
+Bundle 'scrooloose/syntastic'
 Bundle 'slim-template/vim-slim'
 Bundle 'OmniCppComplete'
 
