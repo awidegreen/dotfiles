@@ -8,6 +8,9 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 "Bundle 'SudoEdit.vim'
 
+" General 
+Bundle 'bling/vim-airline'
+
 " Programming
 "Bundle 'snipMate'
 "Bundle 'ruby'
@@ -33,6 +36,7 @@ Bundle 'OmniCppComplete'
 Bundle 'ervandew/supertab'
 Bundle 'majutsushi/tagbar'
 Bundle 'xolox/vim-easytags'
+Bundle 'xolox/vim-misc'
 
 " Search 
 Bundle 'mileszs/ack.vim'
