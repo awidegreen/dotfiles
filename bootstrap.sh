@@ -45,7 +45,7 @@ if [ -d $tmux_powerline_dir ]; then
   printf "tmux-powerline is already installed!\n"
 else
   printf "Installing tmux-powerline to $tmux_powerline_dir\n"
-  git clone https://github.com/erikw/tmux-powerline.git $tmux_powerline_dir
+  git clone https://github.com/awidegreen/tmux-powerline.git $tmux_powerline_dir
 fi
 
 # Install vim bundles
@@ -57,4 +57,9 @@ else
 fi
 
 vim -u ~/.vim/bundles.vim +BundleInstall +q +q
+
+echo "I'm normally using 'Liberation Mono' font for the terminal."
+echo "On Arch, install 'ttf-liberation'."
+echo "In order to support powerline symbols for tmux and vim, consider installing 'Liberation Mono with Powerline Symbolesa' pre-patched fonts, see https://github.com/Lokaltog/powerline-fonts"
+echo "Therefore, download the fonts, put them into ~/.fonts and execute fc-cache -vf ~/.fonts - see https://powerline.readthedocs.org/en/latest/fontpatching.html for more details"
 
