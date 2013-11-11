@@ -65,6 +65,8 @@ set formatoptions+=1           " When wrapping paragraphs, don't end lines
 set completeopt=longest,menu
 set wildmode=list:longest,list:full
 set complete=.,t
+
+set relativenumber             " set relative line numbering
 " }}}
 
 
@@ -100,8 +102,8 @@ highlight ColorColumn ctermbg=8
 
 " if gui is started, remove menu and toolbar
 if has("gui_running")
-  set guioptions-=m  " Remove menubar
-  set guioptions-=T  " Remove toolbar
+  "set guioptions-=m  " Remove menubar
+  "set guioptions-=T  " Remove toolbar
 endif
 
 " show # buffers, f-type, fileformat and fileencoding in statusline

@@ -32,6 +32,9 @@ Bundle 'scrooloose/syntastic'
 Bundle 'slim-template/vim-slim'
 Bundle 'OmniCppComplete'
 
+" latex
+Bundle 'vim-latex/vim-latex'
+
 " Tags and completion
 Bundle 'ervandew/supertab'
 Bundle 'majutsushi/tagbar'
