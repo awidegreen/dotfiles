@@ -143,12 +143,6 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 " 'source my vimrc'
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
-" toggle tagbar
-nnoremap <leader>t :TagbarToggle<cr>
-
-" open ctrlp tags: 'search tag'
-nnoremap <leader>st :CtrlPTag<cr>
-
 " spell checking
 nnoremap <silent> <leader>s :set spell!<cr>
 
@@ -183,6 +177,11 @@ set wildignore+=*.so,*.swp,*.zip,*.cc.o,*.cc.opts,*.cc.d
 set wildignore+=obj.x86_64-*,BuildInfo
 "  how to manage the working dir
 let g:ctrlp_working_path_mode = 0 " don't manage the working dir at all
+
+" open ctrlp tags: 'search tag'
+nnoremap <leader>st :CtrlPTag<cr>
+
+
 " }}}
 
 " OmniCppComplete conig {{{
@@ -209,6 +208,16 @@ set completeopt=menuone,menu,longest
 " airline/powerline {{{
 let g:airline_powerline_fonts = 1
 let g:airline_theme = "powerlineish""
+" }}}
+
+" tagbar {{{
+" toggle tagbar
+nnoremap <leader>t :TagbarToggle<cr>
+nnoremap <F8> :TagbarOpen fj<cr>
+" }}}
+
+" delimitMate {{{
+let delimitMate_expand_cr = 1   " makes { CR  more useful
 " }}}
 
 "}}}
