@@ -13,7 +13,3 @@ alias more="less -r"
 # usage: ? (23+42)*3
 alias '?=bc -l <<<'
 
-# nas
-alias g2movies='/net/awnas/Multimedia/Movies'
-alias g2music='/net/awnas/Multimedia/Music'
-alias g2share='/net/awnas/awidegreen'
