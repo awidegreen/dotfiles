@@ -12,12 +12,14 @@ Bundle 'gmarik/vundle'
 Bundle 'bling/vim-airline'
 
 " Programming
-"Bundle 'snipMate'
 "Bundle 'ruby'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-surround'
 Bundle 'Raimondi/delimitMate'
+
+" snippets 
+Bundle 'SirVer/ultisnips'
 
 " Git integration
 Bundle 'git.zip'
@@ -29,18 +31,17 @@ Bundle 'The-NERD-tree'
 
 " Syntax
 Bundle 'tpope/vim-markdown'
-Bundle 'scrooloose/syntastic'
 Bundle 'slim-template/vim-slim'
 Bundle 'OmniCppComplete'
+Bundle 'honza/dockerfile.vim'
+Bundle 'scrooloose/syntastic'
 
 " latex
 Bundle 'vim-latex/vim-latex'
 
 " Tags and completion
-Bundle 'ervandew/supertab'
 Bundle 'majutsushi/tagbar'
-Bundle 'xolox/vim-easytags'
-Bundle 'xolox/vim-misc'
+Bundle 'Valloric/YouCompleteMe'
 
 " Search 
 Bundle 'mileszs/ack.vim'

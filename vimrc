@@ -153,7 +153,7 @@ nnoremap <silent> <leader>ut :UpdateTags<cr>
 inoremap jk <esc>
 
 " force to use jk to exit insert mode
-inoremap <c-c> <nop>
+"inoremap <c-c> <nop>
 " }}}
 
 
@@ -196,15 +196,6 @@ let OmniCpp_SelectFirstItem     = 1 "select first item in pop-up
 set completeopt=menuone,menu,longest
 " }}}
 
-" supertab adjustments {{{
-"let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
-"highlight   clear
-"highlight   Pmenu         ctermfg=0 ctermbg=2
-"highlight   PmenuSel      ctermfg=0 ctermbg=7
-"highlight   PmenuSbar     ctermfg=7 ctermbg=0
-"highlight   PmenuThumb    ctermfg=0 ctermbg=7
-" }}}
-
 " airline/powerline {{{
 let g:airline_powerline_fonts = 1
 let g:airline_theme = "powerlineish""
@@ -220,7 +211,17 @@ nnoremap <F8> :TagbarOpen fj<cr>
 let delimitMate_expand_cr = 1   " makes { CR  more useful
 " }}}
 
+" YouCompleteMe {{{
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_complete_in_comments = 1
+""}}}
+
+" Ultisnips {{{
+let g:UltiSnipsExpandTrigger='<C-E>'
+" }}}
+
 "}}}
 
 set laststatus=2
 filetype plugin indent on
+
