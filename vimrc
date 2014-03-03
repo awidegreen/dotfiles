@@ -222,6 +222,25 @@ let g:UltiSnipsExpandTrigger='<C-E>'
 
 "}}}
 
+" Special code highlight handling {{{
+ 
+" We reset the vimrc augroup. Autocommands are added to this group throughout
+" the file
+augroup vimrc
+  autocmd!
+augroup END
+ 
+" Highlight Class and Function names
+function! s:HighlightFunctionsAndClasses()
+  syn match cCustomFunc      "\w\+\s*\((\)\@="
+  syn match cCustomClass     "\w\+\s*\(::\)\@="
+
+  hi def link cCustomFunc      Function
+  hi def link cCustomClass     Function
+endfunction
+au vimrc Syntax * call s:HighlightFunctionsAndClasses()
+"}}}
+
 set laststatus=2
 filetype plugin indent on
 

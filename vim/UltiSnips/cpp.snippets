@@ -2,3 +2,17 @@ snippet TODO "A TODO for cpp files." b
 // `echo $USER` - `!v strftime("%c")`
 // TODO: ${1:desc} 
 endsnippet
+
+#snippet '^\s*(printline|coutline)' "stl cout printline" r
+snippet coutline "stl cout printline" b
+std::cout << ${1:"text"} << std::endl;
+endsnippet
+
+# while loop using an iterator
+snippet whileit "Iterate with iterator" b
+while ( ${1:iterator} != ${2:list}.end() )
+{
+  ${3:// code}
+  ++$1;
+}
+endsnippet
