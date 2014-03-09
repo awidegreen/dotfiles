@@ -214,6 +214,8 @@ let delimitMate_expand_cr = 1   " makes { CR  more useful
 " YouCompleteMe {{{
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_complete_in_comments = 1
+" map YcmComplete command 
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 ""}}}
 
 " Ultisnips {{{
