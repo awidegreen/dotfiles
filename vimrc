@@ -72,12 +72,8 @@ set relativenumber             " set relative line numbering
 
 " Look and Feel {{{
 " Colors and Scheme {{{
-"colorscheme tango
-"let g:bg_tango=1
-colorscheme zenburn
-"colorscheme molokai
-"colorscheme mustang
-"colorscheme cloudsmidnight 
+"colorscheme zenburn
+colorscheme molokai
 "let g:molokai_original = 0
 let g:rehash256 = 1
 "set background=dark  " should be used for console?
@@ -102,8 +98,8 @@ highlight ColorColumn ctermbg=8
 
 " if gui is started, remove menu and toolbar
 if has("gui_running")
-  "set guioptions-=m  " Remove menubar
-  "set guioptions-=T  " Remove toolbar
+  set guioptions-=m  " Remove menubar
+  set guioptions-=T  " Remove toolbar
 endif
 
 " show # buffers, f-type, fileformat and fileencoding in statusline
@@ -118,18 +114,19 @@ set noeb vb t_vb=
 " define my leader key
 let mapleader = "-"
 
+" obsolete arrow key disabling {{{
 " Get the arrow working in tmux
-nnoremap <Esc>[B <Down>
-
+"nnoremap <Esc>[B <Down>
 " disallow using the arrow keys completely!
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
+"nnoremap <up> <nop>
+"nnoremap <down> <nop>
+"nnoremap <left> <nop>
+"nnoremap <right> <nop>
+"inoremap <up> <nop>
+"inoremap <down> <nop>
+"inoremap <left> <nop>
+"inoremap <right> <nop>
+"}}}
 
 " Get rid of search highlights
 nnoremap <leader><space> :noh<cr>
@@ -221,6 +218,25 @@ nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " Ultisnips {{{
 let g:UltiSnipsExpandTrigger='<C-E>'
 " }}}
+
+" Tablular {{{
+" 
+if exists(":Tabularize")
+  nmap <Leader>a= :Tabularize /=<CR>
+  vmap <Leader>a= :Tabularize /=<CR>
+  nmap <Leader>a: :Tabularize /:\zs<CR>
+  vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
+
+"}}}
+
+" fugitive hooks to mapping working {{{
+"let g:fugitive_git_executable = 'LANG=en_US.UTF8 git'
+"if (&filetype=='gitcommit')
+  "let mapleader = "-"
+"endif
+
+"}}}
 
 "}}}
 

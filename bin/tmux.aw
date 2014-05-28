@@ -21,7 +21,6 @@ fi
 tmux="tmux -2"
 
 detektorfm=detektor.fm
-irc=irssi
 if_cmd="vnstat"
 defpath="~"
 devpath="~/development"
@@ -57,13 +56,6 @@ fi
 
 # show systemd journal
 $tmux new-window -t $SESSION -k -n syslog 'exec journalctl -afn 100'
-
-# new window for irc 
-if $(has_cmd $irc) == "true"; then 
-  $tmux new-window -t $SESSION -n irc "sleep 1; $irc"
-  $tmux split-window -h -p 15 -t $SESSION:2 "cat ~/.irssi/nicklistfifo"
-  $tmux selectp -t $SESSION:2.0
-fi
 
 ### make the following windows close-able
 #  in case, remain-on-exit should not be on for every window, comment out!

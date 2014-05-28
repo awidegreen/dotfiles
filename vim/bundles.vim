@@ -5,14 +5,13 @@ filetype off                   " required!
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+" vundle
 Bundle 'gmarik/vundle'
-"Bundle 'SudoEdit.vim'
 
 " General 
 Bundle 'bling/vim-airline'
 
 " Programming
-"Bundle 'ruby'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-surround'
@@ -22,19 +21,17 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'SirVer/ultisnips'
 
 " Git integration
-Bundle 'git.zip'
-Bundle 'fugitive.vim'
+Bundle 'tpope/vim-fugitive'
 
 " Navigation
 Bundle 'kien/ctrlp.vim'
-Bundle 'The-NERD-tree'
+Bundle 'scrooloose/nerdtree'
 
 " Syntax
 Bundle 'tpope/vim-markdown'
 Bundle 'slim-template/vim-slim'
-Bundle 'OmniCppComplete'
 Bundle 'honza/dockerfile.vim'
-Bundle 'scrooloose/syntastic'
+Bundle 'vim-scripts/headerguard'
 
 " latex
 Bundle 'vim-latex/vim-latex'
@@ -43,14 +40,17 @@ Bundle 'vim-latex/vim-latex'
 Bundle 'majutsushi/tagbar'
 Bundle 'Valloric/YouCompleteMe'
 
+" alignment 
+Bundle 'godlygeek/tabular'
+
 " Search 
 Bundle 'mileszs/ack.vim'
+Bundle 'rking/ag.vim'
 
 " Color schemes
-Bundle 'Solarized'
-Bundle 'Wombat'
-Bundle 'wombat256.vim'
-Bundle 'Zenburn'
 Bundle 'vim-scripts/tango.vim'
+Bundle 'tomasr/molokai'
+Bundle 'jnurmine/Zenburn'
+Bundle 'altercation/vim-colors-solarized'
 
 filetype plugin indent on     " required!
