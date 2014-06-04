@@ -103,4 +103,7 @@ type grc &>/dev/null && source $HOME/.zsh/grc_aliases.zsh
 # set term variable to support 256 colors
 export TERM=screen-256color
 
+# for golang
+export GOROOT="/usr/share/go"
+
 # EOF
