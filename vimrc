@@ -49,7 +49,6 @@ set scrolloff=3                " keep 3 lines off the edges of the screen when s
 set virtualedit=all            " allow the cursor to go in to "invalid" places
 set hlsearch                   " highlight search terms
 set incsearch                  " show search matches as you type
-set gdefault                   " search/replace "globally" (on a line) by default
 set pastetoggle=<F2>           " when in insert mode, press <F2> to go to
                                " paste mode, where you can paste mass data
                                " that won't be autoindented
@@ -178,6 +177,13 @@ let g:ctrlp_working_path_mode = 0 " don't manage the working dir at all
 " open ctrlp tags: 'search tag'
 nnoremap <leader>st :CtrlPTag<cr>
 
+" ctrl-p funky
+let g:ctrlp_extensions = ['funky']
+nnoremap <Leader>fu :CtrlPFunky<Cr>
+" narrow the list down with a word under cursor
+nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+let g:ctrlp_funky_syntax_highlight = 1
+let g:ctrlp_funky_matchtype = 'path'
 
 " }}}
 
@@ -211,12 +217,14 @@ let delimitMate_expand_cr = 1   " makes { CR  more useful
 " YouCompleteMe {{{
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_complete_in_comments = 1
+let g:ycm_show_diagnostics_ui = 1
+let g:ycm_seed_identifiers_with_syntax = 1 
 " map YcmComplete command 
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 ""}}}
 
 " Ultisnips {{{
-let g:UltiSnipsExpandTrigger='<C-E>'
+let g:UltiSnipsExpandTrigger='<c-e>'
 " }}}
 
 " Tablular {{{

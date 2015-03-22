@@ -13,3 +13,5 @@ alias more="less -r"
 # usage: ? (23+42)*3
 alias '?=bc -l <<<'
 
+# dux
+alias dux='du -kchxa -d 1 . | sort -h'

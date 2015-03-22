@@ -26,12 +26,14 @@ Bundle 'tpope/vim-fugitive'
 " Navigation
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
+Plugin 'tacahiroy/ctrlp-funky'
 
 " Syntax
 Bundle 'tpope/vim-markdown'
 Bundle 'slim-template/vim-slim'
 Bundle 'honza/dockerfile.vim'
 Bundle 'vim-scripts/headerguard'
+Plugin 'fatih/vim-go'
 
 " latex
 Bundle 'vim-latex/vim-latex'

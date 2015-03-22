@@ -70,6 +70,9 @@ export PATH=$PATH:$HOME/.bin/
 #077 would be more secure, but 022 is generally quite realistic
 umask 022
 
+# fix for enter, make new line instead of ^M
+stty icrnl
+
 #Auto Escape URLS
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
@@ -103,7 +106,6 @@ type grc &>/dev/null && source $HOME/.zsh/grc_aliases.zsh
 # set term variable to support 256 colors
 export TERM=screen-256color
 
-# for golang
-export GOROOT="/usr/share/go"
+export GOPATH="$HOME/.go"
 
 # EOF
