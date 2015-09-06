@@ -34,6 +34,8 @@ Bundle 'slim-template/vim-slim'
 Bundle 'honza/dockerfile.vim'
 Bundle 'vim-scripts/headerguard'
 Plugin 'fatih/vim-go'
+Plugin 'rust-lang/rust.vim'
+Plugin 'cespare/vim-toml'
 
 " latex
 Bundle 'vim-latex/vim-latex'
