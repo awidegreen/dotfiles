@@ -30,14 +30,6 @@ for file in $dotdir/*; do
   fi
 done
 
-# set up zsh shell environment
-if [ -d $HOME/.oh-my-zsh ]; then
-  printf "OH-MY-ZSH is already installed, only updating ...\n"
-  zsh $HOME/.oh-my-zsh/tools/upgrade.sh
-else
-  printf "Installing OH-MY-ZSH\n"
-  git clone git://github.com/awidegreen/oh-my-zsh.git $HOME/.oh-my-zsh
-fi
 
 # install tmux-powerline
 tmux_powerline_dir="$HOME/.tmux-powerline"
