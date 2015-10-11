@@ -56,4 +56,4 @@ zstyle ':vcs_info:git:*' actionformats ":${FMT_BRANCH}${FMT_ACTION}%m%f"
 precmd () { vcs_info }
 
 #PROMPT='[%n@%m %~${vcs_info_msg_0_}] %{$reset_color%}'
-PROMPT="[@%{$hostname_color%}%m%{$reset_color%} %~${vcs_info_msg_0_}] %{$reset_color%}"
+PROMPT='[@%{$hostname_color%}%m%{$reset_color%} %~${vcs_info_msg_0_}] %{$reset_color%}'
