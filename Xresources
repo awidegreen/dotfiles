@@ -143,6 +143,12 @@ URxvt*scrollBar: False
 ! Internal border of number pixels. This resource is limited to 100; option -b.
 URxvt*internalBorder: 1
 
+! home and end key see 
+!  https://wiki.archlinux.org/index.php/Home_and_End_keys_not_working
+URxvt.keysym.Home: \033[1~
+URxvt.keysym.End: \033[4~
+URxvt.keysym.KP_Home: \033[1~
+URxvt.keysym.KP_End:  \033[4~
 
 ! perl extension
 URxvt.perl-ext-common:       default,url-select,selection-to-clipboard,clipboard,resize-font,fullscreen,vtwheel

@@ -23,6 +23,10 @@ Bundle 'SirVer/ultisnips'
 " Git integration
 Bundle 'tpope/vim-fugitive'
 
+" Gist
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/gist-vim'
+
 " Navigation
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
