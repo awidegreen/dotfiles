@@ -9,7 +9,8 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " General 
-Bundle 'bling/vim-airline'
+Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " Programming
 Bundle 'scrooloose/nerdcommenter'
@@ -34,6 +35,7 @@ Plugin 'tacahiroy/ctrlp-funky'
 
 " Syntax
 Bundle 'tpope/vim-markdown'
+Plugin 'suan/vim-instant-markdown'
 Bundle 'slim-template/vim-slim'
 Bundle 'honza/dockerfile.vim'
 Bundle 'vim-scripts/headerguard'

@@ -64,6 +64,9 @@ $tmux set-window-option -q -t $SESSION set-remain-on-exit off
 # ssh 
 $tmux new-window -t $SESSION -n ssh 
 
+# weechat 
+$tmux new-window -t $SESSION -k -n irc  weechat
+
 # development
 $tmux set -t $SESSION -q default-path $devpath
 $tmux new-window -t $SESSION -n development 

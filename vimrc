@@ -219,6 +219,10 @@ let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_complete_in_comments = 1
 let g:ycm_show_diagnostics_ui = 1
 let g:ycm_seed_identifiers_with_syntax = 1 
+
+" rust configuration
+let g:ycm_rust_src_path = '/usr/local/src/rustc/src'
+
 " map YcmComplete command 
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 ""}}}
@@ -245,6 +249,11 @@ endif
 "endif
 
 "}}}
+
+" vim-instant-markdown {{{
+" Disable autostart by default, use :InstantMarkdownPreview to start it!
+let g:instant_markdown_autostart = 0
+" }}}
 
 "}}}
 
