@@ -16,16 +16,9 @@ set directory=~/.vim/tmp
 set term=xterm
 "}}}
 
-
-" Include other local configs {{{
-" Vundle and bundles configuration
+" Vundle and bundles configuration {{{ 
 source ~/.vim/bundles.vim
-" Include local functions 
-if filereadable(glob("~/.vimrc.local")) 
-  source ~/.vimrc.local
-endif
 " }}}
-
 
 " Editing behaviour {{{
 set showmode                   " always show what mode we're currently editing in
@@ -66,8 +59,17 @@ set wildmode=list:longest,list:full
 set complete=.,t
 
 set relativenumber             " set relative line numbering
+
+" Remove tailoring whitespaces {{{                               
+" This applies only to specific filetypes and is applied when the the buffer
+" is been writing.
+" use ':set filetype?' to get the filetype of the current buffer
+"
+" more info: http://vim.wikia.com/wiki/Remove_unwanted_spaces
+autocmd FileType c,cpp,java,php,rust,python,ruby,sh,make autocmd BufWritePre <buffer> :%s/\s\+$//e
 " }}}
 
+" }}}
 
 " Look and Feel {{{
 " Colors and Scheme {{{
@@ -107,7 +109,6 @@ set statusline=[%n]\ [%f]\ %w%y%r%m[%{&fileformat}][%{&fileencoding}]\ %=\ %l/%L
 " Disable error bell, beep
 set noeb vb t_vb=
 " }}}
-
 
 " Keyboard shortcuts {{{
 " define my leader key
@@ -152,7 +153,6 @@ inoremap jk <esc>
 "inoremap <c-c> <nop>
 " }}}
 
-
 " Plugins {{{
 
 " built-in match: more matching for '%' {{{
@@ -171,6 +171,8 @@ let NERDTreeChDirMode = 0           " don't change CWD at all
 set wildignore+=*.so,*.swp,*.zip,*.cc.o,*.cc.opts,*.cc.d
 "  wildignore, E/// extensions
 set wildignore+=obj.x86_64-*,BuildInfo
+" ignore vcs directories
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 "  how to manage the working dir
 let g:ctrlp_working_path_mode = 0 " don't manage the working dir at all
 
@@ -189,14 +191,14 @@ let g:ctrlp_funky_matchtype = 'path'
 
 " OmniCppComplete conig {{{
 " override built-in C omnicomplete with C++ OmniCppComplete plugin
-set omnifunc=syntaxcomplete#Complete 
-let OmniCpp_GlobalScopeSearch   = 1
-let OmniCpp_DisplayMode         = 1
-let OmniCpp_ShowScopeInAbbr     = 0 "do not show namespace in pop-up
-let OmniCpp_ShowPrototypeInAbbr = 1 "show prototype in pop-up
-let OmniCpp_ShowAccess          = 1 "show access in pop-up
-let OmniCpp_SelectFirstItem     = 1 "select first item in pop-up
-set completeopt=menuone,menu,longest
+"set omnifunc=syntaxcomplete#Complete 
+"let OmniCpp_GlobalScopeSearch   = 1
+"let OmniCpp_DisplayMode         = 1
+"let OmniCpp_ShowScopeInAbbr     = 0 "do not show namespace in pop-up
+"let OmniCpp_ShowPrototypeInAbbr = 1 "show prototype in pop-up
+"let OmniCpp_ShowAccess          = 1 "show access in pop-up
+"let OmniCpp_SelectFirstItem     = 1 "select first item in pop-up
+"set completeopt=menuone,menu,longest
 " }}}
 
 " airline/powerline {{{
@@ -255,6 +257,11 @@ endif
 let g:instant_markdown_autostart = 0
 " }}}
 
+" rust.vim {{{
+" Set the compiler to cargo when loading a rust file
+autocmd BufRead,BufNewFile Cargo.toml,Cargo.lock,*.rs compiler cargo
+"let g:rustfmt_autosave = 1
+" }}}
 "}}}
 
 " Special code highlight handling {{{
@@ -275,6 +282,12 @@ function! s:HighlightFunctionsAndClasses()
 endfunction
 au vimrc Syntax * call s:HighlightFunctionsAndClasses()
 "}}}
+
+" Include other local configs {{{
+if filereadable(glob("~/.vimrc.local")) 
+  source ~/.vimrc.local
+endif
+" }}}
 
 set laststatus=2
 filetype plugin indent on

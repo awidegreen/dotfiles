@@ -11,6 +11,9 @@ bindkey "^[[6~" down-line-or-history
 # make search up and down work, so partially type and hit up/down to find relevant stuff
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
+# search history up and down when PageUp, PageDown
+bindkey '^[[5~' history-beginning-search-backward
+bindkey '^[[6~' history-beginning-search-forward
 
 bindkey "^[[H" beginning-of-line
 bindkey "^[[1~" beginning-of-line
@@ -31,9 +34,6 @@ bindkey "^[[3~" delete-char
 bindkey "^[3;5~" delete-char
 bindkey "\e[3~" delete-char
 
-# search history up and down when PageUp, PageDown
-bindkey '^[[5~' history-beginning-search-backward
-bindkey '^[[6~' history-beginning-search-forward
 
 # consider emacs keybindings:
 

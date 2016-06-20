@@ -18,8 +18,13 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-surround'
 Bundle 'Raimondi/delimitMate'
 
+" Debugging
+Plugin 'gilligan/vim-lldb'
+Plugin 'joonty/vdebug'
+
 " snippets 
 Bundle 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
 " Git integration
 Bundle 'tpope/vim-fugitive'
@@ -42,6 +47,7 @@ Bundle 'vim-scripts/headerguard'
 Plugin 'fatih/vim-go'
 Plugin 'rust-lang/rust.vim'
 Plugin 'cespare/vim-toml'
+Plugin 'scrooloose/syntastic'
 
 " latex
 Bundle 'vim-latex/vim-latex'
