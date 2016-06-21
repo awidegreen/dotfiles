@@ -14,8 +14,12 @@ export PATH=:$HOME/.cargo/bin:$PATH:$HOME/.bin/:$HOME/.gem/ruby/2.3.0/bin
 #   set cargo home for racerd (ycm)
 export CARGO_HOME="$HOME/.cargo"
 
+export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
+
 # set term variable to support 256 colors
 export TERM=screen-256color
+
+export EDITOR=vim
 
 genpasswd() {
   local chars=$1

@@ -9,5 +9,7 @@ alias grep='grep --color=auto'
 alias less="less -r"
 alias more="less -r"
 
+alias ag="ag --pager=\"less -r\""
+
 # restart pulseaudio (to rescan for network sink)
 alias repulse="pulseaudio --kill && sleep 2 && pulseaudio --start"

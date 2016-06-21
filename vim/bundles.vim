@@ -11,6 +11,10 @@ Bundle 'gmarik/vundle'
 " General 
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tmhedberg/matchit'
+
+" Execution
+Plugin 'tpope/vim-dispatch'
 
 " Programming
 Bundle 'scrooloose/nerdcommenter'
@@ -20,6 +24,9 @@ Bundle 'Raimondi/delimitMate'
 
 " Debugging
 Plugin 'joonty/vdebug'
+
+" Cpp 
+Plugin 'drmikehenry/vim-headerguard'
 
 " snippets 
 Bundle 'SirVer/ultisnips'
@@ -46,7 +53,10 @@ Bundle 'vim-scripts/headerguard'
 Plugin 'fatih/vim-go'
 Plugin 'rust-lang/rust.vim'
 Plugin 'cespare/vim-toml'
-Plugin 'scrooloose/syntastic'
+Plugin 'kergoth/vim-bitbake'
+Plugin 'hallison/vim-rdoc'
+Plugin 'othree/xml.vim'
+Plugin 'aklt/plantuml-syntax'
 
 " latex
 Bundle 'vim-latex/vim-latex'

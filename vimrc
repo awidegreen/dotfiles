@@ -20,6 +20,7 @@ set term=xterm
 source ~/.vim/bundles.vim
 " }}}
 
+
 " Editing behaviour {{{
 set showmode                   " always show what mode we're currently editing in
 set nowrap                     " don't wrap lines
@@ -110,6 +111,7 @@ set statusline=[%n]\ [%f]\ %w%y%r%m[%{&fileformat}][%{&fileencoding}]\ %=\ %l/%L
 set noeb vb t_vb=
 " }}}
 
+
 " Keyboard shortcuts {{{
 " define my leader key
 let mapleader = "-"
@@ -151,13 +153,19 @@ inoremap jk <esc>
 
 " force to use jk to exit insert mode
 "inoremap <c-c> <nop>
+
+" vim-dispatch bindings {{{
+" run :Make, within tmux it makes a subshell and puts errors in Quickfix
+nnoremap <silent> <leader>r :Make<cr>
+" run :Make!, as above but run in background
+nnoremap <silent> <leader>rb :Make!<cr>
 " }}}
+
+" }}}
+
 
 " Plugins {{{
 
-" built-in match: more matching for '%' {{{
-runtime macros/matchit.vim
-" }}}
 
 " NERDTree {{{
 
