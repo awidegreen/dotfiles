@@ -19,7 +19,6 @@ Bundle 'tpope/vim-surround'
 Bundle 'Raimondi/delimitMate'
 
 " Debugging
-Plugin 'gilligan/vim-lldb'
 Plugin 'joonty/vdebug'
 
 " snippets 
