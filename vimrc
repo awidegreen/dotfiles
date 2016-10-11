@@ -103,6 +103,8 @@ if has("gui_running")
   set guioptions-=m  " Remove menubar
   set guioptions-=T  " Remove toolbar
 endif
+" set the guifont to something reasonable
+set guifont=Hack\ 8
 
 " show # buffers, f-type, fileformat and fileencoding in statusline
 set statusline=[%n]\ [%f]\ %w%y%r%m[%{&fileformat}][%{&fileencoding}]\ %=\ %l/%L,%-5c\ %P\
@@ -216,7 +218,7 @@ let g:airline_theme = "powerlineish""
 
 " tagbar {{{
 " toggle tagbar
-nnoremap <leader>t :TagbarToggle<cr>
+nnoremap <leader>tb :TagbarToggle<cr>
 nnoremap <F8> :TagbarOpen fj<cr>
 " }}}
 
@@ -229,12 +231,23 @@ let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_complete_in_comments = 1
 let g:ycm_show_diagnostics_ui = 1
 let g:ycm_seed_identifiers_with_syntax = 1 
+let g:ycm_warning_symbol="!!"
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
 
 " rust configuration
 let g:ycm_rust_src_path = '/usr/local/src/rustc/src'
 
 " map YcmComplete command 
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>t :YcmCompleter GoTo<CR>
+nnoremap <leader>i :YcmCompleter GoToInclude<CR>
+nnoremap <leader>df :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>dc :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>y :YcmCompleter GetType<CR>
+nnoremap <leader>p :YcmCompleter GetParent<CR>
+nnoremap <leader>do :YcmCompleter GetDoc<CR>
+nnoremap <leader>f :YcmCompleter FixIt<CR>
 ""}}}
 
 " Ultisnips {{{
@@ -244,10 +257,10 @@ let g:UltiSnipsExpandTrigger='<c-e>'
 " Tablular {{{
 " 
 if exists(":Tabularize")
-  nmap <Leader>a= :Tabularize /=<CR>
-  vmap <Leader>a= :Tabularize /=<CR>
-  nmap <Leader>a: :Tabularize /:\zs<CR>
-  vmap <Leader>a: :Tabularize /:\zs<CR>
+  nmap <leader>a= :Tabularize /=<CR>
+  vmap <leader>a= :Tabularize /=<CR>
+  nmap <leader>a: :Tabularize /:\zs<CR>
+  vmap <leader>a: :Tabularize /:\zs<CR>
 endif
 
 "}}}

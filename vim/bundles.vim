@@ -34,6 +34,7 @@ Plugin 'honza/vim-snippets'
 
 " Git integration
 Bundle 'tpope/vim-fugitive'
+Plugin 'junegunn/gv.vim'
 
 " Gist
 Plugin 'mattn/webapi-vim'
@@ -53,10 +54,12 @@ Bundle 'vim-scripts/headerguard'
 Plugin 'fatih/vim-go'
 Plugin 'rust-lang/rust.vim'
 Plugin 'cespare/vim-toml'
+Plugin 'scrooloose/syntastic'
 Plugin 'kergoth/vim-bitbake'
 Plugin 'hallison/vim-rdoc'
 Plugin 'othree/xml.vim'
 Plugin 'aklt/plantuml-syntax'
+Plugin 'asciidoc/vim-asciidoc'
 
 " latex
 Bundle 'vim-latex/vim-latex'
