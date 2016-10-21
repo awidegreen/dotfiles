@@ -1,5 +1,9 @@
 export ZSH=~/.zsh
 
+# Load and run compinit
+autoload -U compinit
+compinit -i
+
 # Load all of the config files in ~/.zsh/lib end in .zsh
 for config_file ($ZSH/lib/*.zsh) source $config_file
 
@@ -28,10 +32,6 @@ genpasswd() {
   tr -dc A-Za-z0-9_\$\%\&\*\? < /dev/urandom | head -c ${chars} | xargs
 }
 #########
-
-# Load and run compinit
-autoload -U compinit
-compinit -i
 
 # added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh

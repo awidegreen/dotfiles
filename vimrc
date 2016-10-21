@@ -283,6 +283,13 @@ let g:instant_markdown_autostart = 0
 autocmd BufRead,BufNewFile Cargo.toml,Cargo.lock,*.rs compiler cargo
 "let g:rustfmt_autosave = 1
 " }}}
+
+" Conque-GDB {{{
+" Set the conque leader to backslash '\'
+let g:ConqueGdb_Leader = '\'
+"let g:rustfmt_autosave = 1
+" }}}
+
 "}}}
 
 " Special code highlight handling {{{
