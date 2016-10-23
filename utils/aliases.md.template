@@ -1,0 +1,12 @@
+{%- for alias_file in alias_files %} 
+
+## aliases in [{{alias_file[0][alias_file[0].rfind("/")+1:]}}]({{alias_file[0]}})
+
+| alias | command |
+| ----- | ------- |
+{%- for alias in alias_file[1] %} 
+| `{{alias[0] }}` | `{{ alias[1] }}` | 
+{%- endfor %}
+
+{%- endfor %}
+

@@ -6,18 +6,24 @@
 dir=$(dirname $0)
 
 if [ ! -f $dir/bin/realpath ];
-then 
+then
   echo "realpath does not exists in $dir/bin"
   exit 1
 fi
 
 dotdir=$($dir/bin/realpath $dir)
 
+# ignore list "foo bar hello world"
+bootstrap_ignore="README.md utils"
+
 for file in $dotdir/*; do
   filename=$(basename $file)
   dotfile=$HOME/.$filename
-  if [ $filename = $(basename $0) -o $filename = "README.md" ]; then continue ; fi
-  
+  if [ $filename = $(basename $0) ]; then continue ; fi
+
+  # ignore elements in ignore list
+  if echo "${bootstrap_ignore[@]}" | grep --word-regexp "$filename" > /dev/null ; then continue ; fi
+
   if [ -e $dotfile ]; then
     if [ -L $dotfile ]; then
       printf "$dotfile is already a link!\n"
@@ -33,7 +39,7 @@ done
 
 # install tmux-powerline
 tmux_powerline_dir="$HOME/.tmux-powerline"
-if [ -d $tmux_powerline_dir ]; then 
+if [ -d $tmux_powerline_dir ]; then
   printf "tmux-powerline is already installed!\n"
 else
   printf "Installing tmux-powerline to $tmux_powerline_dir\n"
