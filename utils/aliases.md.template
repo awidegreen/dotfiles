@@ -5,7 +5,7 @@
 | alias | command |
 | ----- | ------- |
 {%- for alias in alias_file[1] %} 
-| `{{alias[0] }}` | `{{ alias[1] }}` | 
+| <code>{{alias[0] }}</code> | <code>{{ alias[1] }}</code> | 
 {%- endfor %}
 
 {%- endfor %}

@@ -148,165 +148,166 @@ In cmake projects, one normally builds out-of-source, therefore adjust you
 
 | alias | command |
 | ----- | ------- | 
-| `dec2bin` | `f() {echo "obase=2; $1"&#124;bc};f` | 
-| `dec2hex` | `f() {echo "obase=16; $1"&#124;bc};f` | 
-| `hex2bin` | `f() {echo "ibase=16;obase=2; $1"&#124;bc};f` | 
-| `hex2dec` | `f() {echo "ibase=16; $1"&#124;bc};f` | 
-| `bin2dec` | `f() {echo "ibase=2; $1"&#124;bc};f` | 
-| `bin2hex` | `f() {echo "ibase=2;obase=16; $1"&#124;bc};f` | 
+| <code>dec2bin</code> | <code>f() {echo &quot;obase=2; $1&quot;&#124;bc};f</code> | 
+| <code>dec2hex</code> | <code>f() {echo &quot;obase=16; $1&quot;&#124;bc};f</code> | 
+| <code>hex2bin</code> | <code>f() {echo &quot;ibase=16;obase=2; $1&quot;&#124;bc};f</code> | 
+| <code>hex2dec</code> | <code>f() {echo &quot;ibase=16; $1&quot;&#124;bc};f</code> | 
+| <code>bin2dec</code> | <code>f() {echo &quot;ibase=2; $1&quot;&#124;bc};f</code> | 
+| <code>bin2hex</code> | <code>f() {echo &quot;ibase=2;obase=16; $1&quot;&#124;bc};f</code> | 
 
 ## aliases in [aliases.git.zsh](zsh/lib/aliases.git.zsh)
 
 | alias | command |
 | ----- | ------- | 
-| `g` | `git` | 
-| `ga` | `git add` | 
-| `gaa` | `git add --all` | 
-| `gapa` | `git add --patch` | 
-| `gb` | `git branch` | 
-| `gba` | `git branch -a` | 
-| `gbd` | `git branch -d` | 
-| `gbda` | `git branch --no-color --merged &#124; command grep -vE "^(\*&#124;\s*(master&#124;develop&#124;dev)\s*$)" &#124; command xargs -n 1 git branch -d` | 
-| `gbl` | `git blame -b -w` | 
-| `gbnm` | `git branch --no-merged` | 
-| `gbr` | `git branch --remote` | 
-| `gbs` | `git bisect` | 
-| `gbsb` | `git bisect bad` | 
-| `gbsg` | `git bisect good` | 
-| `gbsr` | `git bisect reset` | 
-| `gbss` | `git bisect start` | 
-| `gc` | `git commit -v` | 
-| `gca` | `git commit -v -a` | 
-| `gcam` | `git commit -a -m` | 
-| `gcsm` | `git commit -s -m` | 
-| `gcb` | `git checkout -b` | 
-| `gcf` | `git config --list` | 
-| `gcl` | `git clone --recursive` | 
-| `gclean` | `git clean -fd` | 
-| `gpristine` | `git reset --hard && git clean -dfx` | 
-| `gcm` | `git checkout master` | 
-| `gcd` | `git checkout develop` | 
-| `gcmsg` | `git commit -m` | 
-| `gco` | `git checkout` | 
-| `gcount` | `git shortlog -sn` | 
-| `gcp` | `git cherry-pick` | 
-| `gcpa` | `git cherry-pick --abort` | 
-| `gcpc` | `git cherry-pick --continue` | 
-| `gcs` | `git commit -S` | 
-| `gd` | `git diff` | 
-| `gdca` | `git diff --cached` | 
-| `gdct` | `git describe --tags `git rev-list --tags --max-count=1`` | 
-| `gdt` | `git diff-tree --no-commit-id --name-only -r` | 
-| `gdw` | `git diff --word-diff` | 
-| `gf` | `git fetch` | 
-| `gfa` | `git fetch --all --prune` | 
-| `gfo` | `git fetch origin` | 
-| `gg` | `git gui citool` | 
-| `gga` | `git gui citool --amend` | 
-| `ggpur` | `ggu` | 
-| `ggpull` | `git pull origin $(git_current_branch)` | 
-| `ggpush` | `git push origin $(git_current_branch)` | 
-| `ggsup` | `git branch --set-upstream-to=origin/$(git_current_branch)` | 
-| `gpsup` | `git push --set-upstream origin $(git_current_branch)` | 
-| `ghh` | `git help` | 
-| `gignore` | `git update-index --assume-unchanged` | 
-| `gignored` | `git ls-files -v &#124; grep "^[[:lower:]]"` | 
-| `gk` | `\gitk --all --branches` | 
-| `gke` | `\gitk --all $(git log -g --pretty=%h)` | 
-| `gl` | `git pull` | 
-| `glg` | `git log --stat` | 
-| `glgp` | `git log --stat -p` | 
-| `glgg` | `git log --graph` | 
-| `glgga` | `git log --graph --decorate --all` | 
-| `glgm` | `git log --graph --max-count=10` | 
-| `glo` | `git log --oneline --decorate` | 
-| `glog` | `git log --oneline --decorate --graph` | 
-| `gloga` | `git log --oneline --decorate --graph --all` | 
-| `gm` | `git merge` | 
-| `gmom` | `git merge origin/master` | 
-| `gmt` | `git mergetool --no-prompt` | 
-| `gmtvim` | `git mergetool --no-prompt --tool=vimdiff` | 
-| `gmum` | `git merge upstream/master` | 
-| `gp` | `git push` | 
-| `gpd` | `git push --dry-run` | 
-| `gpoat` | `git push origin --all && git push origin --tags` | 
-| `gpu` | `git push upstream` | 
-| `gpv` | `git push -v` | 
-| `gr` | `git remote` | 
-| `gra` | `git remote add` | 
-| `grb` | `git rebase` | 
-| `grba` | `git rebase --abort` | 
-| `grbc` | `git rebase --continue` | 
-| `grbi` | `git rebase -i` | 
-| `grbm` | `git rebase master` | 
-| `grbs` | `git rebase --skip` | 
-| `grh` | `git reset HEAD` | 
-| `grhh` | `git reset HEAD --hard` | 
-| `grmv` | `git remote rename` | 
-| `grrm` | `git remote remove` | 
-| `grset` | `git remote set-url` | 
-| `grt` | `cd $(git rev-parse --show-toplevel &#124;&#124; echo ".")` | 
-| `gru` | `git reset --` | 
-| `grup` | `git remote update` | 
-| `grv` | `git remote -v` | 
-| `gsb` | `git status -sb` | 
-| `gsd` | `git svn dcommit` | 
-| `gsi` | `git submodule init` | 
-| `gsps` | `git show --pretty=short --show-signature` | 
-| `gsr` | `git svn rebase` | 
-| `gss` | `git status -s` | 
-| `gst` | `git status` | 
-| `gsta` | `git stash save` | 
-| `gstaa` | `git stash apply` | 
-| `gstc` | `git stash clear` | 
-| `gstd` | `git stash drop` | 
-| `gstl` | `git stash list` | 
-| `gstp` | `git stash pop` | 
-| `gsts` | `git stash show --text` | 
-| `gsu` | `git submodule update` | 
-| `gts` | `git tag -s` | 
-| `gtv` | `git tag &#124; sort -V` | 
-| `gunignore` | `git update-index --no-assume-unchanged` | 
-| `gunwip` | `git log -n 1 &#124; grep -q -c "\-\-wip\-\-" && git reset HEAD~1` | 
-| `gup` | `git pull --rebase` | 
-| `gupv` | `git pull --rebase -v` | 
-| `glum` | `git pull upstream master` | 
-| `gwch` | `git whatchanged -p --abbrev-commit --pretty=medium` | 
-| `gwip` | `git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify -m "--wip--"` | 
+| <code>g</code> | <code>git</code> | 
+| <code>ga</code> | <code>git add</code> | 
+| <code>gaa</code> | <code>git add --all</code> | 
+| <code>gapa</code> | <code>git add --patch</code> | 
+| <code>gb</code> | <code>git branch</code> | 
+| <code>gba</code> | <code>git branch -a</code> | 
+| <code>gbd</code> | <code>git branch -d</code> | 
+| <code>gbda</code> | <code>git branch --no-color --merged &#124; command grep -vE &quot;^(\&#42;&#124;\s&#42;(master&#124;develop&#124;dev)\s&#42;$)&quot; &#124; command xargs -n 1 git branch -d</code> | 
+| <code>gbl</code> | <code>git blame -b -w</code> | 
+| <code>gbnm</code> | <code>git branch --no-merged</code> | 
+| <code>gbr</code> | <code>git branch --remote</code> | 
+| <code>gbs</code> | <code>git bisect</code> | 
+| <code>gbsb</code> | <code>git bisect bad</code> | 
+| <code>gbsg</code> | <code>git bisect good</code> | 
+| <code>gbsr</code> | <code>git bisect reset</code> | 
+| <code>gbss</code> | <code>git bisect start</code> | 
+| <code>gc</code> | <code>git commit -v</code> | 
+| <code>gca</code> | <code>git commit -v -a</code> | 
+| <code>gcam</code> | <code>git commit -a -m</code> | 
+| <code>gcsm</code> | <code>git commit -s -m</code> | 
+| <code>gcb</code> | <code>git checkout -b</code> | 
+| <code>gcf</code> | <code>git config --list</code> | 
+| <code>gcl</code> | <code>git clone --recursive</code> | 
+| <code>gclean</code> | <code>git clean -fd</code> | 
+| <code>gpristine</code> | <code>git reset --hard &amp;&amp; git clean -dfx</code> | 
+| <code>gcm</code> | <code>git checkout master</code> | 
+| <code>gcd</code> | <code>git checkout develop</code> | 
+| <code>gcmsg</code> | <code>git commit -m</code> | 
+| <code>gco</code> | <code>git checkout</code> | 
+| <code>gcount</code> | <code>git shortlog -sn</code> | 
+| <code>gcp</code> | <code>git cherry-pick</code> | 
+| <code>gcpa</code> | <code>git cherry-pick --abort</code> | 
+| <code>gcpc</code> | <code>git cherry-pick --continue</code> | 
+| <code>gcs</code> | <code>git commit -S</code> | 
+| <code>gd</code> | <code>git diff</code> | 
+| <code>gdca</code> | <code>git diff --cached</code> | 
+| <code>gdct</code> | <code>git describe --tags `git rev-list --tags --max-count=1`</code> | 
+| <code>gdt</code> | <code>git diff-tree --no-commit-id --name-only -r</code> | 
+| <code>gdw</code> | <code>git diff --word-diff</code> | 
+| <code>gf</code> | <code>git fetch</code> | 
+| <code>gfa</code> | <code>git fetch --all --prune</code> | 
+| <code>gfo</code> | <code>git fetch origin</code> | 
+| <code>gg</code> | <code>git gui citool</code> | 
+| <code>gga</code> | <code>git gui citool --amend</code> | 
+| <code>ggpur</code> | <code>ggu</code> | 
+| <code>ggpull</code> | <code>git pull origin $(git_current_branch)</code> | 
+| <code>ggpush</code> | <code>git push origin $(git_current_branch)</code> | 
+| <code>ggsup</code> | <code>git branch --set-upstream-to=origin/$(git_current_branch)</code> | 
+| <code>gpsup</code> | <code>git push --set-upstream origin $(git_current_branch)</code> | 
+| <code>ghh</code> | <code>git help</code> | 
+| <code>gignore</code> | <code>git update-index --assume-unchanged</code> | 
+| <code>gignored</code> | <code>git ls-files -v &#124; grep &quot;^[[:lower:]]&quot;</code> | 
+| <code>gk</code> | <code>\gitk --all --branches</code> | 
+| <code>gke</code> | <code>\gitk --all $(git log -g --pretty=%h)</code> | 
+| <code>gl</code> | <code>git pull</code> | 
+| <code>glg</code> | <code>git log --stat</code> | 
+| <code>glgp</code> | <code>git log --stat -p</code> | 
+| <code>glgg</code> | <code>git log --graph</code> | 
+| <code>glgga</code> | <code>git log --graph --decorate --all</code> | 
+| <code>glgm</code> | <code>git log --graph --max-count=10</code> | 
+| <code>glo</code> | <code>git log --oneline --decorate</code> | 
+| <code>glog</code> | <code>git log --oneline --decorate --graph</code> | 
+| <code>gloga</code> | <code>git log --oneline --decorate --graph --all</code> | 
+| <code>gm</code> | <code>git merge</code> | 
+| <code>gmom</code> | <code>git merge origin/master</code> | 
+| <code>gmt</code> | <code>git mergetool --no-prompt</code> | 
+| <code>gmtvim</code> | <code>git mergetool --no-prompt --tool=vimdiff</code> | 
+| <code>gmum</code> | <code>git merge upstream/master</code> | 
+| <code>gp</code> | <code>git push</code> | 
+| <code>gpd</code> | <code>git push --dry-run</code> | 
+| <code>gpoat</code> | <code>git push origin --all &amp;&amp; git push origin --tags</code> | 
+| <code>gpu</code> | <code>git push upstream</code> | 
+| <code>gpv</code> | <code>git push -v</code> | 
+| <code>gr</code> | <code>git remote</code> | 
+| <code>gra</code> | <code>git remote add</code> | 
+| <code>grb</code> | <code>git rebase</code> | 
+| <code>grba</code> | <code>git rebase --abort</code> | 
+| <code>grbc</code> | <code>git rebase --continue</code> | 
+| <code>grbi</code> | <code>git rebase -i</code> | 
+| <code>grbm</code> | <code>git rebase master</code> | 
+| <code>grbs</code> | <code>git rebase --skip</code> | 
+| <code>grh</code> | <code>git reset HEAD</code> | 
+| <code>grhh</code> | <code>git reset HEAD --hard</code> | 
+| <code>grmv</code> | <code>git remote rename</code> | 
+| <code>grrm</code> | <code>git remote remove</code> | 
+| <code>grset</code> | <code>git remote set-url</code> | 
+| <code>grt</code> | <code>cd $(git rev-parse --show-toplevel &#124;&#124; echo &quot;.&quot;)</code> | 
+| <code>gru</code> | <code>git reset --</code> | 
+| <code>grup</code> | <code>git remote update</code> | 
+| <code>grv</code> | <code>git remote -v</code> | 
+| <code>gsb</code> | <code>git status -sb</code> | 
+| <code>gsd</code> | <code>git svn dcommit</code> | 
+| <code>gsi</code> | <code>git submodule init</code> | 
+| <code>gsps</code> | <code>git show --pretty=short --show-signature</code> | 
+| <code>gsr</code> | <code>git svn rebase</code> | 
+| <code>gss</code> | <code>git status -s</code> | 
+| <code>gst</code> | <code>git status</code> | 
+| <code>gsta</code> | <code>git stash save</code> | 
+| <code>gstaa</code> | <code>git stash apply</code> | 
+| <code>gstc</code> | <code>git stash clear</code> | 
+| <code>gstd</code> | <code>git stash drop</code> | 
+| <code>gstl</code> | <code>git stash list</code> | 
+| <code>gstp</code> | <code>git stash pop</code> | 
+| <code>gsts</code> | <code>git stash show --text</code> | 
+| <code>gsu</code> | <code>git submodule update</code> | 
+| <code>gts</code> | <code>git tag -s</code> | 
+| <code>gtv</code> | <code>git tag &#124; sort -V</code> | 
+| <code>gunignore</code> | <code>git update-index --no-assume-unchanged</code> | 
+| <code>gunwip</code> | <code>git log -n 1 &#124; grep -q -c &quot;\-\-wip\-\-&quot; &amp;&amp; git reset HEAD~1</code> | 
+| <code>gup</code> | <code>git pull --rebase</code> | 
+| <code>gupv</code> | <code>git pull --rebase -v</code> | 
+| <code>glum</code> | <code>git pull upstream master</code> | 
+| <code>gwch</code> | <code>git whatchanged -p --abbrev-commit --pretty=medium</code> | 
+| <code>gwip</code> | <code>git add -A; git rm $(git ls-files --deleted) 2&gt; /dev/null; git commit --no-verify -m &quot;--wip--&quot;</code> | 
 
 ## aliases in [aliases.zsh](zsh/lib/aliases.zsh)
 
 | alias | command |
 | ----- | ------- | 
-| `ll` | `ls -lh` | 
-| `lla` | `ls -lha` | 
-| `lh` | `ls -lah` | 
-| `lt` | `ls -hltr` | 
-| `lltr` | `lt` | 
-| `l` | `ll` | 
-| `lll` | `ll` | 
-| `grep` | `grep --color=auto` | 
-| `finp` | `f() {find "$1" -iname "${@:2}"};f` | 
-| `cfinp` | `f() {find . -iname "${@:2}"};f` | 
-| `fin` | `f() {find "$1" -iname "*${@:2}*"};f` | 
-| `cfin` | `f() {find . -iname "*${@:1}*"};f` | 
-| `rgp` | `f() {rg -p "$@" &#124; less -r};f` | 
+| <code>ll</code> | <code>ls -lh</code> | 
+| <code>lla</code> | <code>ls -lha</code> | 
+| <code>lh</code> | <code>ls -lah</code> | 
+| <code>lt</code> | <code>ls -hltr</code> | 
+| <code>lltr</code> | <code>lt</code> | 
+| <code>l</code> | <code>ll</code> | 
+| <code>lll</code> | <code>ll</code> | 
+| <code>grep</code> | <code>grep --color=auto</code> | 
+| <code>finp</code> | <code>f() {find &quot;$1&quot; -iname &quot;${@:2}&quot;};f</code> | 
+| <code>cfinp</code> | <code>f() {find . -iname &quot;${@:2}&quot;};f</code> | 
+| <code>fin</code> | <code>f() {find &quot;$1&quot; -iname &quot;&#42;${@:2}&#42;&quot;};f</code> | 
+| <code>cfin</code> | <code>f() {find . -iname &quot;&#42;${@:1}&#42;&quot;};f</code> | 
+| <code>rgp</code> | <code>f() {rg -p &quot;$@&quot; &#124; less -r};f</code> | 
 
 ## aliases in [correction.zsh](zsh/lib/correction.zsh)
 
 | alias | command |
 | ----- | ------- | 
-| `cap` | `nocorrect cap` | 
-| `man` | `nocorrect man` | 
-| `tree` | `nocorrect tree` | 
-| `thor` | `nocorrect thor` | 
-| `mv` | `nocorrect mv` | 
-| `mysql` | `nocorrect mysql` | 
-| `mkdir` | `nocorrect mkdir` | 
-| `gist` | `nocorrect gist` | 
-| `heroku` | `nocorrect heroku` | 
-| `ebuild` | `nocorrect ebuild` | 
-| `hpodder` | `nocorrect hpodder` | 
-| `vim` | `nocorrect vim` | 
-| `ssh` | `nocorrect ssh` | 
-| `pass` | `nocorrect pass` |
+| <code>cap</code> | <code>nocorrect cap</code> | 
+| <code>man</code> | <code>nocorrect man</code> | 
+| <code>tree</code> | <code>nocorrect tree</code> | 
+| <code>thor</code> | <code>nocorrect thor</code> | 
+| <code>mv</code> | <code>nocorrect mv</code> | 
+| <code>mysql</code> | <code>nocorrect mysql</code> | 
+| <code>mkdir</code> | <code>nocorrect mkdir</code> | 
+| <code>gist</code> | <code>nocorrect gist</code> | 
+| <code>heroku</code> | <code>nocorrect heroku</code> | 
+| <code>ebuild</code> | <code>nocorrect ebuild</code> | 
+| <code>hpodder</code> | <code>nocorrect hpodder</code> | 
+| <code>vim</code> | <code>nocorrect vim</code> | 
+| <code>ssh</code> | <code>nocorrect ssh</code> | 
+| <code>pass</code> | <code>nocorrect pass</code> |
+
