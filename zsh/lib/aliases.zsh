@@ -6,6 +6,7 @@ alias lltr='lt'
 alias l='ll'
 alias lll='ll'
 alias ...='cd ../..'
+alias ....='cd ../../..'
 
 alias grep='grep --color=auto'
 alias less="less -r"
