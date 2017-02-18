@@ -14,7 +14,14 @@ fi
 dotdir=$($dir/bin/realpath $dir)
 
 # ignore list "foo bar hello world"
-bootstrap_ignore="README.md utils"
+bootstrap_ignore="README.md utils st"
+
+cat << EOF
+################################################################################
+Install dotfiles (link dir/files in $dotdir to HOME/.<dfir/file>)
+################################################################################
+
+EOF
 
 for file in $dotdir/*; do
   filename=$(basename $file)
@@ -36,6 +43,14 @@ for file in $dotdir/*; do
   fi
 done
 
+cat << EOF
+
+
+################################################################################
+Install powerline
+################################################################################
+
+EOF
 
 # install tmux-powerline
 tmux_powerline_dir="$HOME/.tmux-powerline"
@@ -45,6 +60,15 @@ else
   printf "Installing tmux-powerline to $tmux_powerline_dir\n"
   git clone https://github.com/awidegreen/tmux-powerline.git $tmux_powerline_dir
 fi
+
+cat << EOF
+
+
+################################################################################
+Install vim vunlde and install vim Plugins using vundle
+################################################################################
+
+EOF
 
 # Install vim bundles
 if [ -d $HOME/.vim/bundle/vundle ]; then
@@ -56,8 +80,32 @@ fi
 
 vim -u ~/.vim/bundles.vim +BundleInstall +q +q
 
-echo "I'm normally using 'Liberation Mono' font for the terminal."
-echo "On Arch, install 'ttf-liberation'."
-echo "In order to support powerline symbols for tmux and vim, consider installing 'Liberation Mono with Powerline Symbolesa' pre-patched fonts, see https://github.com/Lokaltog/powerline-fonts"
-echo "Therefore, download the fonts, put them into ~/.fonts and execute fc-cache -vf ~/.fonts - see https://powerline.readthedocs.org/en/latest/fontpatching.html for more details"
+cat << EOF
+
+
+################################################################################
+Install st terminal from sources - see http://st.suckless.org
+################################################################################
+
+EOF
+
+export dotdir
+$dotdir/st/install.sh
+
+cat << EOF
+
+
+################################################################################
+Information
+################################################################################
+
+I'm normally using 'Liberation Mono' or Hack font for the terminal.
+On Arch, install 'ttf-liberation'.
+In order to support powerline symbols for tmux and vim, consider
+installing 'Liberation Mono with Powerline Symbolesa' pre-patched fonts,
+echo "see https://github.com/Lokaltog/powerline-fonts"
+Therefore, download the fonts, put them into ~/.fonts and execute"
+fc-cache -vf ~/.fonts - see https://powerline.readthedocs.org/en/latest/fontpatching.html for more details"
+################################################################################
+EOF
 
