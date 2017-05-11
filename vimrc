@@ -111,6 +111,9 @@ set statusline=[%n]\ [%f]\ %w%y%r%m[%{&fileformat}][%{&fileencoding}]\ %=\ %l/%L
 
 " Disable error bell, beep
 set noeb vb t_vb=
+
+" highlight the current line under cursor
+set cursorline
 " }}}
 
 
@@ -174,6 +177,8 @@ nnoremap <silent> <leader>rb :Make!<cr>
 let NERDTreeWinPos = "right"        " show on the right side
 let NERDTreeWinSize = 51
 let NERDTreeChDirMode = 0           " don't change CWD at all
+let NERDTreeIgnore = ['\~$', "target$[[dir]]", "build.*[[dir]]" ]
+
 "}}}
 
 " Ctrl-P config {{{
@@ -182,7 +187,11 @@ set wildignore+=*.so,*.swp,*.zip,*.cc.o,*.cc.opts,*.cc.d
 "  wildignore, E/// extensions
 set wildignore+=obj.x86_64-*,BuildInfo
 " ignore vcs directories
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+"let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+      \ 'dir': '\v[\/](\.(git|hg|svn)|target|build.*)$',
+      \ }
+
 "  how to manage the working dir
 let g:ctrlp_working_path_mode = 0 " don't manage the working dir at all
 
