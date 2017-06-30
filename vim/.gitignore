@@ -4,3 +4,4 @@ backup
 bundle
 .netrwhist
 .VimballRecord
+_pack.vim

@@ -1,7 +1,11 @@
 " vim:fdm=marker
 
 " This must be first, because it changes other options as a side effect.
-set nocompatible
+if &compatible
+  " `:set nocp` has many side effects. Therefore this should be done
+  " only when 'compatible' is set.
+  set nocompatible
+endif
 
 " Enviroment pref {{{
 " Encoding
@@ -14,10 +18,28 @@ set backupdir=~/.vim/backup/
 set directory=~/.vim/tmp
 
 set term=xterm
+
+"  exclude something
+set wildignore+=*.so,*.swp,*.zip,*.cc.o,*.cc.opts,*.cc.d
+"  wildignore, E/// extensions
+set wildignore+=obj.x86_64-*,BuildInfo
 "}}}
 
-" Vundle and bundles configuration {{{ 
-source ~/.vim/bundles.vim
+"  minpac configuration {{{
+"if exists('*minpac#init')
+  "" minpac is loaded.
+  "call minpac#init()
+  "call minpac#add('k-takata/minpac', {'type': 'opt'})
+
+  "" Additional plugins from plugins.vim
+  "source ~/.vim/plugins.vim
+"endif
+
+"" Define user commands for updating/cleaning the plugins.
+"" Each of them loads minpac, reloads .vimrc to register the
+"" information of plugins, then performs the task.
+"command! PackUpdate packadd minpac | source $MYVIMRC | call minpac#update()
+"command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
 " }}}
 
 
@@ -48,11 +70,11 @@ set pastetoggle=<F2>           " when in insert mode, press <F2> to go to
                                " that won't be autoindented
 set mouse=a                    " enable using the mouse if terminal emulator
                                " supports it (xterm does)
-set ttyfast                    " We have a fast tty                               
+set ttyfast                    " We have a fast tty
 set fileformats="unix,dos,mac"
 set formatoptions+=1           " When wrapping paragraphs, don't end lines
                                " with 1-letter words (looks stupid)
-                               
+
 " Tab completion options
 " (only complete to the longest unambiguous match, and show a menu)
 set completeopt=longest,menu
@@ -61,13 +83,13 @@ set complete=.,t
 
 set relativenumber             " set relative line numbering
 
-" Remove tailoring whitespaces {{{                               
+" Remove tailoring whitespaces {{{
 " This applies only to specific filetypes and is applied when the the buffer
 " is been writing.
 " use ':set filetype?' to get the filetype of the current buffer
 "
 " more info: http://vim.wikia.com/wiki/Remove_unwanted_spaces
-autocmd FileType c,cpp,java,php,rust,python,ruby,sh,make autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd! FileType c,cpp,java,php,rust,python,ruby,sh,make,vim,cmake,markdown autocmd BufWritePre <buffer> :%s/\s\+$//e
 " }}}
 
 " }}}
@@ -82,8 +104,8 @@ let g:rehash256 = 1
 " }}}
 
 " Make invisible chars visible, for end-of-line and tab
-set list                       
-set listchars=tab:▸\ ,eol:¬    
+set list
+set listchars=tab:▸\ ,eol:¬
 
 " for supporting 256 colors
 set t_Co=256
@@ -153,176 +175,23 @@ nnoremap <silent> <leader>s :set spell!<cr>
 " easytag UpdateTags: ut (update tags)
 nnoremap <silent> <leader>ut :UpdateTags<cr>
 
-" exit insert mode with jk 
+" exit insert mode with jk
 inoremap jk <esc>
 
 " force to use jk to exit insert mode
 "inoremap <c-c> <nop>
 
-" vim-dispatch bindings {{{
-" run :Make, within tmux it makes a subshell and puts errors in Quickfix
-nnoremap <silent> <leader>r :Make<cr>
-" run :Make!, as above but run in background
-nnoremap <silent> <leader>rb :Make!<cr>
 " }}}
 
-" }}}
-
-
-" Plugins {{{
-
-
-" NERDTree {{{
-
-let NERDTreeWinPos = "right"        " show on the right side
-let NERDTreeWinSize = 51
-let NERDTreeChDirMode = 0           " don't change CWD at all
-let NERDTreeIgnore = ['\~$', "target$[[dir]]", "build.*[[dir]]" ]
-
-"}}}
-
-" Ctrl-P config {{{
-"  exclude something
-set wildignore+=*.so,*.swp,*.zip,*.cc.o,*.cc.opts,*.cc.d
-"  wildignore, E/// extensions
-set wildignore+=obj.x86_64-*,BuildInfo
-" ignore vcs directories
-"let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_custom_ignore = {
-      \ 'dir': '\v[\/](\.(git|hg|svn)|target|build.*)$',
-      \ }
-
-"  how to manage the working dir
-let g:ctrlp_working_path_mode = 0 " don't manage the working dir at all
-
-" open ctrlp tags: 'search tag'
-nnoremap <leader>st :CtrlPTag<cr>
-
-" ctrl-p funky
-let g:ctrlp_extensions = ['funky']
-nnoremap <Leader>fu :CtrlPFunky<Cr>
-" narrow the list down with a word under cursor
-nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
-let g:ctrlp_funky_syntax_highlight = 1
-let g:ctrlp_funky_matchtype = 'path'
-
-" }}}
-
-" OmniCppComplete conig {{{
-" override built-in C omnicomplete with C++ OmniCppComplete plugin
-"set omnifunc=syntaxcomplete#Complete 
-"let OmniCpp_GlobalScopeSearch   = 1
-"let OmniCpp_DisplayMode         = 1
-"let OmniCpp_ShowScopeInAbbr     = 0 "do not show namespace in pop-up
-"let OmniCpp_ShowPrototypeInAbbr = 1 "show prototype in pop-up
-"let OmniCpp_ShowAccess          = 1 "show access in pop-up
-"let OmniCpp_SelectFirstItem     = 1 "select first item in pop-up
-"set completeopt=menuone,menu,longest
-" }}}
-
-" airline/powerline {{{
-let g:airline_powerline_fonts = 1
-let g:airline_theme = "powerlineish""
-" }}}
-
-" tagbar {{{
-" toggle tagbar
-nnoremap <leader>tb :TagbarToggle<cr>
-nnoremap <F8> :TagbarOpen fj<cr>
-
-let g:tagbar_type_rust = {
-	\ 'ctagstype' : 'rust',
-	\ 'kinds' : [
-			\'T:types,type definitions',
-			\'f:functions,function definitions',
-			\'g:enum,enumeration names',
-			\'s:structure names',
-			\'m:modules,module names',
-			\'c:consts,static constants',
-			\'t:traits,traits',
-			\'i:impls,trait implementations',
-	\]
-	\}
-" }}}
-
-" delimitMate {{{
-let delimitMate_expand_cr = 1   " makes { CR  more useful
-" }}}
-
-" YouCompleteMe {{{
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_complete_in_comments = 1
-let g:ycm_show_diagnostics_ui = 1
-let g:ycm_seed_identifiers_with_syntax = 1 
-let g:ycm_warning_symbol="!!"
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_collect_identifiers_from_tags_files = 1
-
-" rust configuration
-let g:ycm_rust_src_path = '/usr/local/src/rustc/src'
-
-" map YcmComplete command 
-nnoremap <leader>t :YcmCompleter GoTo<CR>
-nnoremap <leader>i :YcmCompleter GoToInclude<CR>
-nnoremap <leader>df :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>dc :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>y :YcmCompleter GetType<CR>
-nnoremap <leader>p :YcmCompleter GetParent<CR>
-nnoremap <leader>do :YcmCompleter GetDoc<CR>
-nnoremap <leader>f :YcmCompleter FixIt<CR>
-""}}}
-
-" Ultisnips {{{
-let g:UltiSnipsExpandTrigger='<c-e>'
-" }}}
-
-" Tablular {{{
-" 
-if exists(":Tabularize")
-  nmap <leader>a= :Tabularize /=<CR>
-  vmap <leader>a= :Tabularize /=<CR>
-  nmap <leader>a: :Tabularize /:\zs<CR>
-  vmap <leader>a: :Tabularize /:\zs<CR>
-endif
-
-"}}}
-
-" fugitive hooks to mapping working {{{
-"let g:fugitive_git_executable = 'LANG=en_US.UTF8 git'
-"if (&filetype=='gitcommit')
-  "let mapleader = "-"
-"endif
-
-"}}}
-
-" vim-instant-markdown {{{
-" Disable autostart by default, use :InstantMarkdownPreview to start it!
-let g:instant_markdown_autostart = 0
-" }}}
-
-" rust.vim {{{
-" Set the compiler to cargo when loading a rust file
-autocmd BufRead,BufNewFile Cargo.toml,Cargo.lock,*.rs compiler cargo
-"let g:rustfmt_autosave = 1
-" }}}
-
-" Conque-GDB {{{
-" Set the conque leader to backslash '\'
-let g:ConqueGdb_Leader = '\'
-"let g:rustfmt_autosave = 1
-" }}}
-
-"}}}
 
 " Special code highlight handling {{{
- 
+
 " We reset the vimrc augroup. Autocommands are added to this group throughout
 " the file
 augroup vimrc
   autocmd!
 augroup END
- 
+
 " Highlight Class and Function names
 function! s:HighlightFunctionsAndClasses()
   syn match cCustomFunc      "\w\+\s*\((\)\@="
@@ -335,7 +204,7 @@ au vimrc Syntax * call s:HighlightFunctionsAndClasses()
 "}}}
 
 " Include other local configs {{{
-if filereadable(glob("~/.vimrc.local")) 
+if filereadable(glob("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
 " }}}

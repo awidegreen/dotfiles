@@ -65,20 +65,26 @@ cat << EOF
 
 
 ################################################################################
-Install vim vunlde and install vim Plugins using vundle
+Install vim vunlde and install vim Plugins using pack
 ################################################################################
 
 EOF
 
-# Install vim bundles
-if [ -d $HOME/.vim/bundle/vundle ]; then
-printf "Updading vundle ...\n"
-  cd $HOME/.vim/bundle/vundle; git pull; cd -
-else
-  git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
-fi
+printf "Initialize vim pack..."
+cargo install -f -git https://github.com/maralla/pack/
+pack update
+printf "done!\n"
 
-vim -u ~/.vim/bundles.vim +BundleInstall +q +q
+
+# Install vim bundles
+#if [ -d $HOME/.vim/bundle/vundle ]; then
+  #printf "Updading vundle ...\n"
+  #cd $HOME/.vim/bundle/vundle; git pull; cd -
+#else
+  #git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
+#fi
+
+#vim -u ~/.vim/bundles.vim +BundleInstall +q +q
 
 cat << EOF
 
