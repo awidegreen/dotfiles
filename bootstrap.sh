@@ -63,6 +63,30 @@ fi
 
 cat << EOF
 
+################################################################################
+Install z
+################################################################################
+
+EOF
+
+printf "Install 'z'..."
+git clone https://github.com/rupa/z.git $HOME/._z
+printf "done!\n"
+
+cat << EOF
+
+################################################################################
+Install fd and exa
+################################################################################
+
+EOF
+
+printf "Install fd and exa..."
+cargo install --git https://github.com/sharkdp/fd
+cargo install --git https://github.com/ogham/exa
+printf "done!\n"
+
+cat << EOF
 
 ################################################################################
 Install vim vunlde and install vim Plugins using pack

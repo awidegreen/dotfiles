@@ -35,3 +35,6 @@ genpasswd() {
 
 # added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
+
+# if z exists, source it
+[ -f $HOME/._z/z.sh ] && source $HOME/._z/z.sh
