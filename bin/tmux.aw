@@ -1,7 +1,7 @@
 #!/bin/sh
 
 function has_cmd() {
-   if command -v $1 >/dev/null 2>&1; then 
+   if command -v $1 >/dev/null 2>&1; then
       echo "true"
    else
       echo "false"
@@ -12,7 +12,7 @@ function has_cmd() {
 
 # define vars
 SESSION=$USER
-if [ $1 ]; then 
+if [ $1 ]; then
    echo "Session name forced: $1"
    SESSION=$1
    sleep 1
@@ -30,7 +30,7 @@ if $(has_cmd "htop") == "true"; then
    top_cmd="htop"
 fi
 
-# init tmux 
+# init tmux
 $tmux has-session -t $SESSION &>/dev/null
 if [ $? -eq 0 ]; then
     echo "Session $SESSION already exists. Attaching."
@@ -39,18 +39,18 @@ if [ $? -eq 0 ]; then
     exit 0;
 fi
 
-$tmux new-session -d -s $SESSION  
+$tmux new-session -u -d -s $SESSION
 # new window with htop and detektorfm
 #   remain on exit is on here, if program closed, respawn pane: bind to F5
 $tmux set-window-option -q -t $SESSION set-remain-on-exit on
 # if htop exists, use it otherwise top
-$tmux new-window -t $SESSION:0 -k -n htopMusic $top_cmd 
+$tmux new-window -t $SESSION:0 -k -n htopMusic $top_cmd
 # split for vnstat
-if $(has_cmd $if_cmd) == "true"; then 
+if $(has_cmd $if_cmd) == "true"; then
    $tmux split-window -v -p 20 -t $SESSION:0  "$if_cmd -l"
-fi 
+fi
 # split for detektor.fm
-if $(has_cmd $detektorfm) == "true"; then 
+if $(has_cmd $detektorfm) == "true"; then
    $tmux split-window -v -p 50 -t $SESSION:0 $detektorfm
 fi
 
@@ -61,22 +61,22 @@ $tmux new-window -t $SESSION -k -n syslog 'exec journalctl -afn 100'
 #  in case, remain-on-exit should not be on for every window, comment out!
 $tmux set-window-option -q -t $SESSION set-remain-on-exit off
 
-# ssh 
-$tmux new-window -t $SESSION -n ssh 
+# ssh
+$tmux new-window -t $SESSION -n ssh
 
-# weechat 
+# weechat
 $tmux new-window -t $SESSION -k -n irc  weechat
 
 # development
 $tmux set -t $SESSION -q default-path $devpath
-$tmux new-window -t $SESSION -n development 
+$tmux new-window -t $SESSION -n development
 $tmux set -t $SESSION -q default-path $defpath
 
 
 # irssi
 
 # misc
-$tmux new-window -t $SESSION -n misc 
+$tmux new-window -t $SESSION -n misc
 
 # select first window, second pane
 $tmux select-window -t $SESSION:0
