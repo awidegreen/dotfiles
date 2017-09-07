@@ -9,7 +9,7 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 
 " rust configuration
-let g:ycm_rust_src_path = '/usr/local/src/rustc/src'
+let g:ycm_rust_src_path = $RUST_SRC_PATH
 
 " map YcmComplete command
 nnoremap <leader>t :YcmCompleter GoTo<CR>

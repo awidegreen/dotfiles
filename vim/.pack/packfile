@@ -122,11 +122,6 @@
 - 
   category: default
   local: false
-  name: scrooloose/syntastic
-  opt: false
-- 
-  category: default
-  local: false
   name: "slim-template/vim-slim"
   opt: false
 - 
@@ -203,4 +198,9 @@
   category: default
   local: false
   name: "vim-scripts/tango.vim"
+  opt: false
+- 
+  category: default
+  local: false
+  name: w0rp/ale
   opt: false
