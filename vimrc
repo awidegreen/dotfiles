@@ -25,21 +25,6 @@ set wildignore+=*.so,*.swp,*.zip,*.cc.o,*.cc.opts,*.cc.d
 set wildignore+=obj.x86_64-*,BuildInfo
 "}}}
 
-"  minpac configuration {{{
-"if exists('*minpac#init')
-  "" minpac is loaded.
-  "call minpac#init()
-  "call minpac#add('k-takata/minpac', {'type': 'opt'})
-
-  "" Additional plugins from plugins.vim
-  "source ~/.vim/plugins.vim
-"endif
-
-"" Define user commands for updating/cleaning the plugins.
-"" Each of them loads minpac, reloads .vimrc to register the
-"" information of plugins, then performs the task.
-"command! PackUpdate packadd minpac | source $MYVIMRC | call minpac#update()
-"command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
 " }}}
 
 
@@ -83,14 +68,25 @@ set complete=.,t
 
 set relativenumber             " set relative line numbering
 
+" the following only when we have autocmd
+if has('autocmd')
+
 " Remove tailoring whitespaces {{{
 " This applies only to specific filetypes and is applied when the the buffer
 " is been writing.
 " use ':set filetype?' to get the filetype of the current buffer
 "
 " more info: http://vim.wikia.com/wiki/Remove_unwanted_spaces
-autocmd! FileType c,cpp,java,php,rust,python,ruby,sh,make,vim,cmake,markdown autocmd BufWritePre <buffer> :%s/\s\+$//e
+   au FileType c,cpp,java,php,rust,python,ruby,sh,make,markdown,vim,cmake autocmd BufWritePre <buffer> :%s/\s\+$//e
 " }}}
+
+" Enable automatic line wrapping and enable spell {{{
+" This applies only to specific filetypes
+   au FileType text,markdown set wm=2 textwidth=80 spell!
+" }}}
+
+endif
+
 
 " }}}
 
@@ -138,7 +134,6 @@ set noeb vb t_vb=
 set cursorline
 " }}}
 
-
 " Keyboard shortcuts {{{
 " define my leader key
 let mapleader = "-"
@@ -178,11 +173,12 @@ nnoremap <silent> <leader>ut :UpdateTags<cr>
 " exit insert mode with jk
 inoremap jk <esc>
 
+" show fqn of current file
+nnoremap <silent> <leader>% :echo expand("%")<cr>
 " force to use jk to exit insert mode
 "inoremap <c-c> <nop>
 
 " }}}
-
 
 " Special code highlight handling {{{
 

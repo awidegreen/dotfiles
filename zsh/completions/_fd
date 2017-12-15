@@ -1,0 +1,60 @@
+#compdef fd
+
+_fd() {
+    typeset -A opt_args
+    local ret=1
+
+    local context curcontext="$curcontext" state line
+    _arguments -s -S -C \
+'-d+[Set maximum search depth (default: none)]' \
+'--max-depth+[Set maximum search depth (default: none)]' \
+'-t+[Filter by type: f(ile), d(irectory), s(ymlink)]: :(f file d directory s symlink)' \
+'--type+[Filter by type: f(ile), d(irectory), s(ymlink)]: :(f file d directory s symlink)' \
+'-e+[Filter by file extension]' \
+'--extension+[Filter by file extension]' \
+'-c+[When to use colors: never, *auto*, always]: :(never auto always)' \
+'--color+[When to use colors: never, *auto*, always]: :(never auto always)' \
+'-j+[Set number of threads to use for searching]' \
+'--threads+[Set number of threads to use for searching]' \
+'--max-buffer-time+[the time (in ms) to buffer, before streaming to the console]' \
+'-H[Search hidden files and directories]' \
+'--hidden[Search hidden files and directories]' \
+'-I[Do not respect .(git)ignore files]' \
+'--no-ignore[Do not respect .(git)ignore files]' \
+'-s[Case-sensitive search (default: smart case)]' \
+'--case-sensitive[Case-sensitive search (default: smart case)]' \
+'-a[Show absolute instead of relative paths]' \
+'--absolute-path[Show absolute instead of relative paths]' \
+'-L[Follow symbolic links]' \
+'--follow[Follow symbolic links]' \
+'-p[Search full path (default: file-/dirname only)]' \
+'--full-path[Search full path (default: file-/dirname only)]' \
+'-0[Separate results by the null character]' \
+'--print0[Separate results by the null character]' \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+"1:: :_fd_commands" \
+&& ret=0
+    
+}
+
+(( $+functions[_fd_commands] )) ||
+_fd_commands() {
+    local commands; commands=(
+        "PATTERN:the search pattern, a regular expression (optional)" \
+"PATH:the root directory for the filesystem search (optional)" \
+    )
+    _describe -t commands 'fd commands' commands "$@"
+}
+(( $+functions[_fd_commands] )) ||
+_fd_commands() {
+    local commands; commands=(
+        "PATTERN:the search pattern, a regular expression (optional)" \
+"PATH:the root directory for the filesystem search (optional)" \
+    )
+    _describe -t commands 'fd commands' commands "$@"
+}
+
+_fd "$@"

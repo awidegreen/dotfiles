@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 function has_cmd() {
    if command -v $1 >/dev/null 2>&1; then
@@ -39,7 +39,7 @@ if [ $? -eq 0 ]; then
     exit 0;
 fi
 
-$tmux new-session -u -d -s $SESSION
+$tmux new-session -d -s $SESSION
 # new window with htop and detektorfm
 #   remain on exit is on here, if program closed, respawn pane: bind to F5
 $tmux set-window-option -q -t $SESSION set-remain-on-exit on
@@ -65,7 +65,9 @@ $tmux set-window-option -q -t $SESSION set-remain-on-exit off
 $tmux new-window -t $SESSION -n ssh
 
 # weechat
-$tmux new-window -t $SESSION -k -n irc  weechat
+if $(has_cmd "weechat") == "true"; then
+   $tmux new-window -t $SESSION -k -n irc  weechat
+fi
 
 # development
 $tmux set -t $SESSION -q default-path $devpath

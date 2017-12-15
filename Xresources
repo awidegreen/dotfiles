@@ -103,7 +103,8 @@ URxvt*color15: #ffffff
 ! that are checked in order when trying to find glyphs for characters. The
 ! first font defines the cell size for characters; other fonts might be
 ! URxvt*font: fontlist
-URxvt*font: xft:Hack:pixelsize=12:antialias=true
+URxvt*font: xft:Hack:pixelsize=10:antialias=true
+!URxvt*font: xft:Hack:pixelsize=16:antialias=true
 !xft:Inconsolata\ For\ Powerline:size=13:antialias=true
 
 ! URxvt*boldFont: fontlist

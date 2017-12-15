@@ -5,6 +5,29 @@
 
 dir=$(dirname $0)
 
+function has_cmd() {
+   if command -v $1 >/dev/null 2>&1; then
+      echo "true"
+   else
+      echo "false"
+   fi
+}
+
+function install_rust() {
+  echo "install rustup and cargo, "
+
+  if [ "$(has_cmd 'curl')" == "false" ]; then
+    echo "rustup requires curl... will install it"
+    sudo pacman -S curl
+  fi
+  curl https://sh.rustup.rs -sSf | sh
+}
+
+function install_ycm_req() {
+  echo "Install vim YouCompleteMe dependencies"
+  sudo pacman -S cmake clang clang-tools-extra boost boost-libs python2
+}
+
 if [ ! -f $dir/bin/realpath ];
 then
   echo "realpath does not exists in $dir/bin"
@@ -69,46 +92,48 @@ Install z
 
 EOF
 
-printf "Install 'z'..."
-git clone https://github.com/rupa/z.git $HOME/._z
+if [ ! -d $HOME/._z ]; then
+  printf "Install 'z'..."
+  git clone https://github.com/rupa/z.git $HOME/._z
+  printf "done!\n"
+fi
+
+
+cat << EOF
+
+################################################################################
+Install rust tools (exa, fd and rg)
+################################################################################
+
+EOF
+
+if [ "$(has_cmd 'cargo')" != "true" ]; then
+  install_rust
+  source ~/.cargo/env
+fi
+
+printf "Install rg, fd and exa... if not present yet"
+[ "$(has_cmd 'rg')" == "false" ] && cargo install -f --git https://github.com/sharkdp/fd
+[ "$(has_cmd 'rg')" == "false" ] && cargo install -f --git https://github.com/ogham/exa
+[ "$(has_cmd 'rg')" == "false" ] && cargo install -f ripgrep
 printf "done!\n"
 
 cat << EOF
 
 ################################################################################
-Install fd and exa
+Install vim Plugins with vim-pack
 ################################################################################
 
 EOF
 
-printf "Install fd and exa..."
-cargo install --git https://github.com/sharkdp/fd
-cargo install --git https://github.com/ogham/exa
+printf "Initialize vim pack... if not present yet"
+if [ "$(has_cmd 'pack')" == "false" ]; then
+  cargo install -f --git https://github.com/maralla/pack/
+  [ "$(has_cmd 'clang')" == "false" ] && install_ycm_req
+  pack install
+fi
+
 printf "done!\n"
-
-cat << EOF
-
-################################################################################
-Install vim vunlde and install vim Plugins using pack
-################################################################################
-
-EOF
-
-printf "Initialize vim pack..."
-cargo install -f -git https://github.com/maralla/pack/
-pack update
-printf "done!\n"
-
-
-# Install vim bundles
-#if [ -d $HOME/.vim/bundle/vundle ]; then
-  #printf "Updading vundle ...\n"
-  #cd $HOME/.vim/bundle/vundle; git pull; cd -
-#else
-  #git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
-#fi
-
-#vim -u ~/.vim/bundles.vim +BundleInstall +q +q
 
 cat << EOF
 
@@ -120,7 +145,7 @@ Install st terminal from sources - see http://st.suckless.org
 EOF
 
 export dotdir
-$dotdir/st/install.sh
+[ "$(has_cmd 'st')" == "false" ] &&  $dotdir/st/install.sh
 
 cat << EOF
 
