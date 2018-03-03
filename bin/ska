@@ -2,7 +2,7 @@
 
 import sys
 import signal
-import os 
+import os
 import subprocess
 
 def ssh_add(key):
@@ -42,6 +42,8 @@ if len(not_added_keys) == 1:
     ssh_add(ssh_folder + "/" + not_added_keys[0])
     sys.exit(0)
 
+not_added_keys.sort()
+
 if not not_added_keys:
     print("No key left to add")
     sys.exit(0)
@@ -63,4 +65,4 @@ while True:
         continue
 
 
-             
+

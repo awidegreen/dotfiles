@@ -23,7 +23,7 @@
   category: default
   local: false
   name: Valloric/YouCompleteMe
-  opt: false
+  opt: true
 - 
   category: default
   local: false
@@ -102,6 +102,11 @@
 - 
   category: default
   local: false
+  name: maralla/completor.vim
+  opt: false
+- 
+  category: default
+  local: false
   name: "mattn/gist-vim"
   opt: false
 - 
@@ -113,6 +118,11 @@
   category: default
   local: false
   name: mileszs/ack.vim
+  opt: false
+- 
+  category: default
+  local: false
+  name: "rhysd/vim-clang-format"
   opt: false
 - 
   category: default

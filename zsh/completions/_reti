@@ -1,0 +1,453 @@
+#compdef reti
+
+_reti() {
+	typeset -A opt_args
+	local ret=1
+
+	local context curcontext="$curcontext" state line
+    _arguments -s -S -C \
+"-f+[The file where the data is stored.]" \
+"--file+[The file where the data is stored.]" \
+"--save-pretty[Save the json file read-able if a subcommand executes save.]" \
+"-h[Prints help information]" \
+"--help[Prints help information]" \
+"-V[Prints version information]" \
+"--version[Prints version information]" \
+"1:: :_reti_commands" \
+"*:: :->reti" \
+&& ret=0
+    case $state in
+    (reti)
+        curcontext="${curcontext%:*:*}:reti-command-$words[1]:"
+        case $line[1] in
+            (init)
+_arguments -s -S -C \
+"-h[Prints help information]" \
+"--help[Prints help information]" \
+"-V[Prints version information]" \
+"--version[Prints version information]" \
+"1:: :_reti_init_commands" \
+&& ret=0
+;;
+(import)
+_arguments -s -S -C \
+"-h[Prints help information]" \
+"--help[Prints help information]" \
+"-V[Prints version information]" \
+"--version[Prints version information]" \
+"1:: :_reti_import_commands" \
+&& ret=0
+;;
+(get)
+_arguments -s -S -C \
+"-h[Prints help information]" \
+"--help[Prints help information]" \
+"-V[Prints version information]" \
+"--version[Prints version information]" \
+"1:: :_reti_get_commands" \
+"*:: :->get" \
+&& ret=0
+case $state in
+    (get)
+        curcontext="${curcontext%:*:*}:reti-get-command-$words[1]:"
+        case $line[1] in
+            (fee)
+_arguments -s -S -C \
+"-h[Prints help information]" \
+"--help[Prints help information]" \
+"-V[Prints version information]" \
+"--version[Prints version information]" \
+&& ret=0
+;;
+(help)
+_arguments -s -S -C \
+"-h[Prints help information]" \
+"--help[Prints help information]" \
+"-V[Prints version information]" \
+"--version[Prints version information]" \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(set)
+_arguments -s -S -C \
+"-h[Prints help information]" \
+"--help[Prints help information]" \
+"-V[Prints version information]" \
+"--version[Prints version information]" \
+"1:: :_reti_set_commands" \
+"*:: :->set" \
+&& ret=0
+case $state in
+    (set)
+        curcontext="${curcontext%:*:*}:reti-set-command-$words[1]:"
+        case $line[1] in
+            (fee)
+_arguments -s -S -C \
+"-h[Prints help information]" \
+"--help[Prints help information]" \
+"-V[Prints version information]" \
+"--version[Prints version information]" \
+"1:: :_reti_set_fee_commands" \
+&& ret=0
+;;
+(help)
+_arguments -s -S -C \
+"-h[Prints help information]" \
+"--help[Prints help information]" \
+"-V[Prints version information]" \
+"--version[Prints version information]" \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(rm)
+_arguments -s -S -C \
+"-f[Enforce removal.]" \
+"--force[Enforce removal.]" \
+"-h[Prints help information]" \
+"--help[Prints help information]" \
+"-V[Prints version information]" \
+"--version[Prints version information]" \
+"1:: :_reti_rm_commands" \
+&& ret=0
+;;
+(add)
+_arguments -s -S -C \
+"-h[Prints help information]" \
+"--help[Prints help information]" \
+"-V[Prints version information]" \
+"--version[Prints version information]" \
+"1:: :_reti_add_commands" \
+"*:: :->add" \
+&& ret=0
+case $state in
+    (add)
+        curcontext="${curcontext%:*:*}:reti-add-command-$words[1]:"
+        case $line[1] in
+            (part)
+_arguments -s -S -C \
+"-h[Prints help information]" \
+"--help[Prints help information]" \
+"-V[Prints version information]" \
+"--version[Prints version information]" \
+"1:: :_reti_add_part_commands" \
+&& ret=0
+;;
+(parse)
+_arguments -s -S -C \
+"-h[Prints help information]" \
+"--help[Prints help information]" \
+"-V[Prints version information]" \
+"--version[Prints version information]" \
+"1:: :_reti_add_parse_commands" \
+&& ret=0
+;;
+(help)
+_arguments -s -S -C \
+"-h[Prints help information]" \
+"--help[Prints help information]" \
+"-V[Prints version information]" \
+"--version[Prints version information]" \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(edit)
+_arguments -s -S -C \
+"-h[Prints help information]" \
+"--help[Prints help information]" \
+"-V[Prints version information]" \
+"--version[Prints version information]" \
+"1:: :_reti_edit_commands" \
+&& ret=0
+;;
+(show)
+_arguments -s -S -C \
+"-w[Show worked time]" \
+"--worked[Show worked time]" \
+"-d[Show all days]" \
+"--days[Show all days]" \
+"-b[Shows time of breaks]" \
+"--breaks[Shows time of breaks]" \
+"-p[Show all parts a of a day]" \
+"--parts[Show all parts a of a day]" \
+"-v[]" \
+"--verbose[]" \
+"-h[Prints help information]" \
+"--help[Prints help information]" \
+"-V[Prints version information]" \
+"--version[Prints version information]" \
+"1:: :_reti_show_commands" \
+"*:: :->show" \
+&& ret=0
+case $state in
+    (show)
+        curcontext="${curcontext%:*:*}:reti-show-command-$words[1]:"
+        case $line[1] in
+            (year)
+_arguments -s -S -C \
+"-h[Prints help information]" \
+"--help[Prints help information]" \
+"-V[Prints version information]" \
+"--version[Prints version information]" \
+"1:: :_reti_show_year_commands" \
+&& ret=0
+;;
+(month)
+_arguments -s -S -C \
+"-y+[Specify a year (default: current)]" \
+"--year+[Specify a year (default: current)]" \
+"-h[Prints help information]" \
+"--help[Prints help information]" \
+"-V[Prints version information]" \
+"--version[Prints version information]" \
+"1:: :_reti_show_month_commands" \
+&& ret=0
+;;
+(week)
+_arguments -s -S -C \
+"-y+[Specify a year (default: current)]" \
+"--year+[Specify a year (default: current)]" \
+"-h[Prints help information]" \
+"--help[Prints help information]" \
+"-V[Prints version information]" \
+"--version[Prints version information]" \
+"1:: :_reti_show_week_commands" \
+&& ret=0
+;;
+(day)
+_arguments -s -S -C \
+"-y+[Specify a year (default: current)]" \
+"--year+[Specify a year (default: current)]" \
+"-m+[Specify a month (default: current)]" \
+"--month+[Specify a month (default: current)]" \
+"-h[Prints help information]" \
+"--help[Prints help information]" \
+"-V[Prints version information]" \
+"--version[Prints version information]" \
+"1:: :_reti_show_day_commands" \
+&& ret=0
+;;
+(help)
+_arguments -s -S -C \
+"-h[Prints help information]" \
+"--help[Prints help information]" \
+"-V[Prints version information]" \
+"--version[Prints version information]" \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(completions)
+_arguments -s -S -C \
+"-h[Prints help information]" \
+"--help[Prints help information]" \
+"-V[Prints version information]" \
+"--version[Prints version information]" \
+"1:: :_reti_completions_commands" \
+&& ret=0
+;;
+(help)
+_arguments -s -S -C \
+"-h[Prints help information]" \
+"--help[Prints help information]" \
+"-V[Prints version information]" \
+"--version[Prints version information]" \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+}
+
+(( $+functions[_reti_commands] )) ||
+_reti_commands() {
+    local commands; commands=(
+        "init:Initializes a new storage file. CAUTION: this will overwrite existing data!" \
+"import:Import from legacy representation. Parts with intersecting times will be disregarded." \
+"get:Gets attributes for the current store." \
+"set:Sets attributes for the current store." \
+"rm:Removes given days from the current store" \
+"add:Everything related to add data to the store." \
+"edit:Edit a specific day." \
+"show:Show recorded times" \
+"completions:Generates completion scripts for your shell" \
+"help:Prints this message or the help of the given subcommand(s)" \
+    )
+    _describe -t commands 'reti commands' commands "$@"
+}
+(( $+functions[_reti_add_commands] )) ||
+_reti_add_commands() {
+    local commands; commands=(
+        "part:Add a part of the day. A part can consist only of the starting point, therefore 'stop' is optional. If only the stop should be recorded use '_' for start" \
+"parse:Lets you add entries based on free text, either as parameter or via stdin." \
+"help:Prints this message or the help of the given subcommand(s)" \
+    )
+    _describe -t commands 'reti add commands' commands "$@"
+}
+(( $+functions[_reti_completions_commands] )) ||
+_reti_completions_commands() {
+    local commands; commands=(
+        "SHELL:The shell to generate the script for" \
+    )
+    _describe -t commands 'reti completions commands' commands "$@"
+}
+(( $+functions[_reti_show_day_commands] )) ||
+_reti_show_day_commands() {
+    local commands; commands=(
+        "DAYS:Space separated list of days to show (default: today)" \
+    )
+    _describe -t commands 'reti show day commands' commands "$@"
+}
+(( $+functions[_reti_edit_commands] )) ||
+_reti_edit_commands() {
+    local commands; commands=(
+        "DATES:can have the format: [yyyy-][mm-]dd, if year or year and month are missing, current will be assumed." \
+    )
+    _describe -t commands 'reti edit commands' commands "$@"
+}
+(( $+functions[_reti_get_fee_commands] )) ||
+_reti_get_fee_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'reti get fee commands' commands "$@"
+}
+(( $+functions[_reti_set_fee_commands] )) ||
+_reti_set_fee_commands() {
+    local commands; commands=(
+        "VALUE:The fee value as f32." \
+    )
+    _describe -t commands 'reti set fee commands' commands "$@"
+}
+(( $+functions[_reti_get_commands] )) ||
+_reti_get_commands() {
+    local commands; commands=(
+        "fee:Gets the fee per hour." \
+"help:Prints this message or the help of the given subcommand(s)" \
+    )
+    _describe -t commands 'reti get commands' commands "$@"
+}
+(( $+functions[_reti_add_help_commands] )) ||
+_reti_add_help_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'reti add help commands' commands "$@"
+}
+(( $+functions[_reti_get_help_commands] )) ||
+_reti_get_help_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'reti get help commands' commands "$@"
+}
+(( $+functions[_reti_help_commands] )) ||
+_reti_help_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'reti help commands' commands "$@"
+}
+(( $+functions[_reti_set_help_commands] )) ||
+_reti_set_help_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'reti set help commands' commands "$@"
+}
+(( $+functions[_reti_show_help_commands] )) ||
+_reti_show_help_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'reti show help commands' commands "$@"
+}
+(( $+functions[_reti_import_commands] )) ||
+_reti_import_commands() {
+    local commands; commands=(
+        "LEGACY_FILE:file with legacy format!" \
+    )
+    _describe -t commands 'reti import commands' commands "$@"
+}
+(( $+functions[_reti_init_commands] )) ||
+_reti_init_commands() {
+    local commands; commands=(
+        "STORAGE_FILE:Which file shall be written!" \
+"LEGACY_FILE:import data from the legacy file!" \
+    )
+    _describe -t commands 'reti init commands' commands "$@"
+}
+(( $+functions[_reti_show_month_commands] )) ||
+_reti_show_month_commands() {
+    local commands; commands=(
+        "MONTHS:Space separated list of month to show (default: current)" \
+    )
+    _describe -t commands 'reti show month commands' commands "$@"
+}
+(( $+functions[_reti_add_parse_commands] )) ||
+_reti_add_parse_commands() {
+    local commands; commands=(
+        "DATA:The data that will be attempted to be parsed and added to the store." \
+    )
+    _describe -t commands 'reti add parse commands' commands "$@"
+}
+(( $+functions[_reti_add_part_commands] )) ||
+_reti_add_part_commands() {
+    local commands; commands=(
+        "START:The format is: HH:MM (default: now), use _ if only stop shall be recorded!" \
+"STOP:Format: HH:MM, optional hence only start will be recorded" \
+    )
+    _describe -t commands 'reti add part commands' commands "$@"
+}
+(( $+functions[_reti_rm_commands] )) ||
+_reti_rm_commands() {
+    local commands; commands=(
+        "DATES:List of days that should be removed, space separated" \
+    )
+    _describe -t commands 'reti rm commands' commands "$@"
+}
+(( $+functions[_reti_set_commands] )) ||
+_reti_set_commands() {
+    local commands; commands=(
+        "fee:Sets the fee per hour which is the base for all parts!" \
+"help:Prints this message or the help of the given subcommand(s)" \
+    )
+    _describe -t commands 'reti set commands' commands "$@"
+}
+(( $+functions[_reti_show_commands] )) ||
+_reti_show_commands() {
+    local commands; commands=(
+        "year:" \
+"month:" \
+"week:" \
+"day:" \
+"help:Prints this message or the help of the given subcommand(s)" \
+    )
+    _describe -t commands 'reti show commands' commands "$@"
+}
+(( $+functions[_reti_show_week_commands] )) ||
+_reti_show_week_commands() {
+    local commands; commands=(
+        "WEEKS:Space separated list of weeks to show (default: current)" \
+    )
+    _describe -t commands 'reti show week commands' commands "$@"
+}
+(( $+functions[_reti_show_year_commands] )) ||
+_reti_show_year_commands() {
+    local commands; commands=(
+        "YEARS:Space separated list of years to show (default: current)" \
+    )
+    _describe -t commands 'reti show year commands' commands "$@"
+}
+
+_reti "$@"
