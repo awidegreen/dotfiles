@@ -14,7 +14,7 @@ for config_file ($ZSH/lib/*.zsh) source $config_file
 [[ -s $HOME/.zshrc.local ]] && source "$HOME/.zshrc.local"
 
 # Put custom $PATH settings into ~/.zprofile or ~/.zshrc.local
-export PATH=$HOME/.cargo/bin:$PATH:$HOME/.bin/:$HOME/.gem/ruby/2.3.0/bin
+export PATH=$HOME/.cargo/bin:$HOME/.bin/:$PATH
 
 # rust-related:
 #   set cargo home for racerd (ycm)

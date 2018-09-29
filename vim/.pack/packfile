@@ -87,6 +87,11 @@
 - 
   category: default
   local: false
+  name: "junegunn/vim-peekaboo"
+  opt: false
+- 
+  category: default
+  local: false
   name: "kergoth/vim-bitbake"
   opt: false
 - 
