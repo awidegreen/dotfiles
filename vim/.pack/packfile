@@ -127,6 +127,11 @@
 - 
   category: default
   local: false
+  name: "nathanaelkane/vim-indent-guides"
+  opt: false
+- 
+  category: default
+  local: false
   name: "rhysd/vim-clang-format"
   opt: false
 - 

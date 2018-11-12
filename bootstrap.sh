@@ -6,17 +6,17 @@
 dir=$(dirname $0)
 
 function has_cmd() {
-   if command -v $1 >/dev/null 2>&1; then
-      echo "true"
-   else
-      echo "false"
-   fi
+  if command -v $1 >/dev/null 2>&1; then
+    return 0
+  else
+    return 1
+  fi
 }
 
 function install_rust() {
   echo "install rustup and cargo, "
 
-  if [ "$(has_cmd 'curl')" == "false" ]; then
+  if ! has_cmd curl; then
     echo "rustup requires curl... will install it"
     sudo pacman -S curl
   fi
@@ -37,7 +37,7 @@ fi
 dotdir=$($dir/bin/realpath $dir)
 
 # ignore list "foo bar hello world"
-bootstrap_ignore="README.md utils st"
+bootstrap_ignore="README.md utils st config"
 
 cat << EOF
 ################################################################################
@@ -107,15 +107,16 @@ Install rust tools (exa, fd and rg)
 
 EOF
 
-if [ "$(has_cmd 'cargo')" != "true" ]; then
+if ! has_cmd cargo; then
   install_rust
   source ~/.cargo/env
 fi
 
 printf "Install rg, fd and exa... if not present yet"
-[ "$(has_cmd 'rg')" == "false" ] && cargo install -f --git https://github.com/sharkdp/fd
-[ "$(has_cmd 'rg')" == "false" ] && cargo install -f --git https://github.com/ogham/exa
-[ "$(has_cmd 'rg')" == "false" ] && cargo install -f ripgrep
+has_cmd fd  || cargo install -f fd-find
+has_cmd exa || cargo install -f exa
+has_cmd rg  || cargo install -f ripgrep
+has_cmd sk  || cargo install -f skim
 printf "done!\n"
 
 cat << EOF
@@ -127,9 +128,9 @@ Install vim Plugins with vim-pack
 EOF
 
 printf "Initialize vim pack... if not present yet"
-if [ "$(has_cmd 'pack')" == "false" ]; then
+if ! has_cmd pack; then
   cargo install -f --git https://github.com/maralla/pack/
-  [ "$(has_cmd 'clang')" == "false" ] && install_ycm_req
+  has_cmd clang || install_ycm_req
   pack install
 fi
 
@@ -145,7 +146,7 @@ Install st terminal from sources - see http://st.suckless.org
 EOF
 
 export dotdir
-[ "$(has_cmd 'st')" == "false" ] &&  $dotdir/st/install.sh
+has_cmd st &&  $dotdir/st/install.sh
 
 cat << EOF
 
