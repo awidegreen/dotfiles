@@ -22,8 +22,10 @@ export EDITOR=vim
 
 #########
 
-# if z exists, source it
-[ -f $HOME/._z/z.sh ] && source $HOME/._z/z.sh
-
 # added by travis gem
 [ -f /home/awidegreen/.travis/travis.sh ] && source /home/awidegreen/.travis/travis.sh
+
+# load starship prompt
+eval "$(starship init zsh)"
+
+source /home/awidegreen/.config/broot/launcher/bash/br

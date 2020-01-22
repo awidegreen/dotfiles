@@ -28,6 +28,42 @@ function install_ycm_req() {
   sudo pacman -S cmake clang clang-tools-extra boost boost-libs python2
 }
 
+
+function setup_tmux() {
+  local tmux_p_d="$HOME/.tmux/plugins"
+  local powerline_d="$tmux_p_d/tmux-powerline"
+  local thumbs_d="$tmux_p_d/tmux-thumbs"
+  local yank_d="$tmux_p_d/tmux-yank"
+
+  # install tmux-powerline
+  if [ -d $powerline_d ]; then
+    printf "tmux-powerline is already installed!\n"
+  else
+    printf "Installing tmux-powerline to $powerline_d\n"
+    git clone https://github.com/awidegreen/tmux-powerline.git $powerline_d
+  fi
+
+  # install tmux-thumbs
+  if [ -d $thumbs_d ]; then
+    printf "tmux-thumbs is already installed!\n"
+  else
+    printf "Installing tmux-thumbs to $thumbs_d\n"
+    git clone https://github.com/fcsonline/tmux-thumbs $thumbs_d
+    local old_dir=$(pwd)
+    cd $thumbs_d
+    cargo build --release
+    cd $old_dir
+  fi
+
+  # install tmux-yank
+  if [ -d $yank_d ]; then
+    printf "tmux-yank is already installed!\n"
+  else
+    printf "Installing tmux-yank to $yank_d\n"
+    git clone https://github.com/tmux-plugins/tmux-yank $yank_d
+  fi
+}
+
 if [ ! -f $dir/bin/realpath ];
 then
   echo "realpath does not exists in $dir/bin"
@@ -68,39 +104,6 @@ done
 
 cat << EOF
 
-
-################################################################################
-Install powerline
-################################################################################
-
-EOF
-
-# install tmux-powerline
-tmux_powerline_dir="$HOME/.tmux-powerline"
-if [ -d $tmux_powerline_dir ]; then
-  printf "tmux-powerline is already installed!\n"
-else
-  printf "Installing tmux-powerline to $tmux_powerline_dir\n"
-  git clone https://github.com/awidegreen/tmux-powerline.git $tmux_powerline_dir
-fi
-
-cat << EOF
-
-################################################################################
-Install z
-################################################################################
-
-EOF
-
-if [ ! -d $HOME/._z ]; then
-  printf "Install 'z'..."
-  git clone https://github.com/rupa/z.git $HOME/._z
-  printf "done!\n"
-fi
-
-
-cat << EOF
-
 ################################################################################
 Install rust tools (exa, fd and rg)
 ################################################################################
@@ -112,12 +115,26 @@ if ! has_cmd cargo; then
   source ~/.cargo/env
 fi
 
-printf "Install rg, fd and exa... if not present yet"
+printf "Install rust tools (rg, exa, skim, fd, starship, hexyl) - if not present yet\n"
 has_cmd fd  || cargo install -f fd-find
 has_cmd exa || cargo install -f exa
 has_cmd rg  || cargo install -f ripgrep
 has_cmd sk  || cargo install -f skim
-printf "done!\n"
+has_cmd starship  || cargo install -f starship
+has_cmd hexyl  || cargo install -f starship
+printf "... done!\n"
+
+cat << EOF
+
+
+################################################################################
+Install tmux plugins
+################################################################################
+
+EOF
+
+setup_tmux
+
 
 cat << EOF
 
@@ -127,7 +144,7 @@ Install vim Plugins with vim-pack
 
 EOF
 
-printf "Initialize vim pack... if not present yet"
+printf "Initialize vim pack... if not yet present\n"
 if ! has_cmd pack; then
   cargo install -f --git https://github.com/maralla/pack/
   has_cmd clang || install_ycm_req
@@ -135,18 +152,6 @@ if ! has_cmd pack; then
 fi
 
 printf "done!\n"
-
-cat << EOF
-
-
-################################################################################
-Install st terminal from sources - see http://st.suckless.org
-################################################################################
-
-EOF
-
-export dotdir
-has_cmd st &&  $dotdir/st/install.sh
 
 cat << EOF
 

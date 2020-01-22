@@ -7,6 +7,7 @@
 
 let g:ale_linters = {'rust': ['rls'] }
 let g:ale_fixers = {'rust': ['rustfmt'] }
+let g:ale_rust_rls_toolchain = 'stable'
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
 let g:ale_fix_on_save = 1
