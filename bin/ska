@@ -22,6 +22,8 @@ keys_in_sshagent = subprocess.getoutput("ssh-add -l").split("\n")
 priv_key_files=[]
 
 for f in os.listdir(ssh_folder):
+    if os.path.isdir(ssh_folder + "/" + f):
+        continue
     with open(ssh_folder+"/"+f) as file:
         for line in file:
             if "PRIVATE KEY" in line:
