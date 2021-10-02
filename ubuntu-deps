@@ -1,0 +1,10 @@
+12  sudo apt install gcc
+   16  sudo apt install make
+   27  sudo apt install pkg-config
+   29  sudo apt install fonts-powerline
+   30  sudo apt install libfontconfig1-dev 
+   32  sudo apt install binutils
+   33  sudo apt install xcb
+   36  sudo apt install libxcb-composite0-dev
+   40  sudo apt install libssl-dev 
+

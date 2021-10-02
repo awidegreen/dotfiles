@@ -28,4 +28,10 @@ export EDITOR=vim
 # load starship prompt
 eval "$(starship init zsh)"
 
-source /home/awidegreen/.config/broot/launcher/bash/br
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+#source /home/awidegreen/.config/broot/launcher/bash/br
+if [ -e /home/arwi/.nix-profile/etc/profile.d/nix.sh ]; then . /home/arwi/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+#if [ -d "$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin" ]; then
+#PATH="$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin:$PATH"
+#fi

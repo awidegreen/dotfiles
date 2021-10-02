@@ -121,10 +121,11 @@ has_cmd exa || cargo install -f exa
 has_cmd rg  || cargo install -f ripgrep
 has_cmd sk  || cargo install -f skim
 has_cmd starship  || cargo install -f starship
-has_cmd hexyl  || cargo install -f starship
+has_cmd hexyl  || cargo install -f hexyl
 has_cmd br  || cargo install -f broot
 has_cmd delta  || cargo install -f git-delta
 has_cmd dutree  || cargo install -f dutree
+has_cmd tokei  || cargo install -f tokei
 printf "... done!\n"
 
 cat << EOF

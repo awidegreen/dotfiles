@@ -77,7 +77,12 @@ if has('autocmd')
 " use ':set filetype?' to get the filetype of the current buffer
 "
 " more info: http://vim.wikia.com/wiki/Remove_unwanted_spaces
-   au FileType c,cpp,java,php,rust,python,ruby,sh,make,markdown,vim,cmake autocmd BufWritePre <buffer> :%s/\s\+$//e
+   "au FileType c,cpp,java,php,rust,python,ruby,sh,make,markdown,vim,cmake autocmd BufWritePre <buffer> :%s/\s\+$//e
+" }}}
+"
+" Enable enable spell {{{
+" This applies only to specific filetypes
+   au FileType c,cpp,java,php,rust,python,ruby,sh,make,markdown,vim,cmake,text,markdown,gitcommit set spell!
 " }}}
 
 " Enable automatic line wrapping and enable spell {{{
@@ -167,9 +172,6 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " spell checking
 nnoremap <silent> <leader>s :set spell!<cr>
 
-" easytag UpdateTags: ut (update tags)
-nnoremap <silent> <leader>ut :UpdateTags<cr>
-
 " exit insert mode with jk
 inoremap jk <esc>
 
@@ -199,6 +201,22 @@ endfunction
 au vimrc Syntax * call s:HighlightFunctionsAndClasses()
 "}}}
 
+
+" disable Q (enter Ex mode)
+nnoremap Q <nop>
+
+" Switch between using tabs and space for indentation {{{
+function! UseTabs()
+  :set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+endf
+nnoremap <silent> <leader>ut :call UseTabs()<cr>
+
+function! UseSpaces()
+  :set tabstop=2 softtabstop=4 shiftwidth=2 expandtab
+endf
+nnoremap <silent> <leader>us :call UseSpaces()<cr>
+" }}}
+
 " Include other local configs {{{
 if filereadable(glob("~/.vimrc.local"))
   source ~/.vimrc.local
@@ -207,4 +225,3 @@ endif
 
 set laststatus=2
 filetype plugin indent on
-
