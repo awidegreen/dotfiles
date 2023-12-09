@@ -5,3 +5,4 @@ bundle
 .netrwhist
 .VimballRecord
 _pack.vim
+pack/default

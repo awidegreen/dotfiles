@@ -41,6 +41,8 @@ window:
 
   startup_mode: Windowed
 
+  opacity: 1.0
+
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
@@ -79,19 +81,19 @@ scrolling:
 font:
   # Normal (roman) font face
   normal:
-    family: Hack
+    family: Hack Nerd Font
     # The `style` can be specified to pick a specific face.
     # style: Regular
 
   # Bold font face
   bold:
-    family: Hack
+    family: Hack Nerd Font
     # The `style` can be specified to pick a specific face.
     # style: Bold
 
   # Italic font face
   italic:
-    family: Hack
+    family: Hack Nerd Font
     # The `style` can be specified to pick a specific face.
     # style: Italic
 
@@ -216,7 +218,7 @@ bell:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 1.0
+#background_opacity: 1.0
 
 # Mouse bindings
 #
@@ -248,12 +250,12 @@ mouse:
   # If this is `true`, the cursor is temporarily hidden when typing.
   hide_when_typing: false
 
-  url:
+  #url:
     # URL launcher
     #
     # This program is executed when clicking on a text which is recognized as a URL.
     # The URL is always added to the command as the last parameter.
-    launcher: xdg-open
+    #launcher: xdg-open
 
     # URL modifiers
     #

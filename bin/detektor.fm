@@ -1,9 +1,0 @@
-#!/bin/bash
-
-player="mplayer"
-dfm_url="http://stream.hoerradar.de/detektorfm-musik-mp3-128"
-
-echo "Gonna start detektor.fm stream ($player): $dfm_url ..."
-$player $dfm_url &>/dev/null
-
-echo "Thanks for listening! Bye!"
