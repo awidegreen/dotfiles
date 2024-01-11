@@ -25,7 +25,7 @@ return require('packer').startup(function(use)
   use 'sainnhe/sonokai'
   use 'tomasr/molokai'
   use 'windwp/nvim-autopairs'
-
+  use 'navarasu/onedark.nvim'
 
   -- lsp
   use {
