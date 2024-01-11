@@ -15,12 +15,7 @@ return require('packer').startup(function(use)
   }
   use 'nvim-treesitter/nvim-treesitter-context'
 
-  use {
-    'numToStr/Comment.nvim',
-    config = function()
-      require('Comment').setup()
-    end
-  }
+  use 'numToStr/Comment.nvim'
 
   -- colorschemes
   use 'tanvirtin/monokai.nvim'
