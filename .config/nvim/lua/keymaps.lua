@@ -13,5 +13,7 @@ keymap("i", "jk", "<ESC>", opts)
 keymap("n", "Q", "<nop>")
 
 -- remove search highlight
-keymap("n", "<leader> ", ":nohlsearch<CR>")
+keymap("n", "<leader>nh", ":nohlsearch<CR>")
 
+vim.keymap.set("n", "]g", vim.diagnostic.goto_next)
+vim.keymap.set("n", "[g", vim.diagnostic.goto_prev)

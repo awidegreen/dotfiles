@@ -30,7 +30,7 @@ return require('packer').startup(function(use)
   -- lsp
   use {
     'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
+    branch = 'v4.x',
     requires = {
       -- LSP Support
       {'neovim/nvim-lspconfig'},             -- Required
@@ -57,6 +57,8 @@ return require('packer').startup(function(use)
   use 'folke/neodev.nvim'
 
   use 'lewis6991/gitsigns.nvim'
+
+  use 'mrcjkb/rustaceanvim'
 
   -- vista.vim
   use 'liuchengxu/vista.vim'
