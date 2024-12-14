@@ -46,3 +46,5 @@ alias rgp='f() {rg -p "$@" | less -r};f'
 alias _ag="ag --pager=\"less -r\""
 alias agp="rgp"
 alias ag="rg"
+
+alias vim=nvim

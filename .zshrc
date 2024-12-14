@@ -18,7 +18,7 @@ export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
 # set term variable to support 256 colors
 export TERM=screen-256color
 
-export EDITOR=vim
+export EDITOR=nvim
 
 #########
 
@@ -35,3 +35,6 @@ if [ -e /home/arwi/.nix-profile/etc/profile.d/nix.sh ]; then . /home/arwi/.nix-p
 #if [ -d "$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin" ]; then
 #PATH="$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin:$PATH"
 #fi
+
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
