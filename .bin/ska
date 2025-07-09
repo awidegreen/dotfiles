@@ -15,20 +15,20 @@ def signal_handler(signal, frame):
 
 signal.signal(signal.SIGINT, signal_handler)
 
-ssh_folder = os.path.expanduser("~/.ssh")
+ssh_folder = os.path.expanduser("~/.ssh/")
 
 keys_in_sshagent = subprocess.getoutput("ssh-add -l").split("\n")
 
 priv_key_files=[]
 
-for f in os.listdir(ssh_folder):
-    if os.path.isdir(ssh_folder + "/" + f):
-        continue
-    with open(ssh_folder+"/"+f) as file:
-        for line in file:
-            if "PRIVATE KEY" in line:
-                priv_key_files.append(f)
-                break
+for subdir, dirs, files in os.walk(ssh_folder):
+    for file in files:
+        f = os.path.join(subdir, file)
+        with open(f) as fh:
+            for line in fh:
+                if "PRIVATE KEY" in line:
+                    priv_key_files.append(f.removeprefix(ssh_folder))
+                    break
 
 not_added_keys=[]
 for priv_key in priv_key_files:
